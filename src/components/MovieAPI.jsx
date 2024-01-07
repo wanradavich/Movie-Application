@@ -1,22 +1,26 @@
 import { useEffect } from "react";
 
-function MovieAPI({ updateMovieList, limit }) {
+function MovieAPI({ updateMovieList, limit, sortBy }) {
   useEffect(() => {
     const getMovie = async () => {
       try {
         const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
         const response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`
+          `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=${sortBy}`
         );
         const data = await response.json();
-        const limitedMovies = data.results.slice(0, limit);
+        const limitedMovies = data.results
+          .filter((movie) => movie.vote_average > 0) // filtering out movies that don't have average votes
+          .slice(0, limit);
         updateMovieList(limitedMovies);
+        console.log(limitedMovies);
       } catch (error) {
         console.log("Error fetching movies:", error);
       }
     };
+
     getMovie();
-  }, [updateMovieList, limit]);
+  }, []);
 
   return null; // Return null or an empty div, as MovieAPI doesn't render any UI
 }

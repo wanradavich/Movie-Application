@@ -6,7 +6,9 @@ function CategoryButtons() {
       <Link to="/TopRated" className="btn btn-light category">
         Top Rated
       </Link>
-      <button className="btn btn-light category">Now Playing</button>
+      <Link to="/NowPlaying" className="btn btn-light category">
+        Now Playing
+      </Link>
       <button className="btn btn-light category">Upcoming</button>
     </div>
   );
