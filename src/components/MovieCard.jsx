@@ -2,16 +2,16 @@ import MovieAPI from "../components/MovieAPI";
 import { useState } from "react";
 
 function MovieCard() {
-  const [popularList, setPopularList] = useState([]);
+  const [movieList, setMovieList] = useState([]);
   const updateMovieList = (list) => {
-    setPopularList(list);
+    setMovieList(list);
   };
   return (
     <>
       <div className="home-container">
         <div className="homecards-container">
           <MovieAPI updateMovieList={updateMovieList} limit={12} />
-          {popularList.map((movie) => (
+          {movieList.map((movie) => (
             <div id="img-container" key={movie.id}>
               <img
                 id="card-img"

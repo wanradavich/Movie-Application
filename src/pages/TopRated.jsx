@@ -1,7 +1,7 @@
-import CategoryButtons from "../components/CategoryButtons";
 import MovieCard from "../components/MovieCard";
+import CategoryButtons from "../components/CategoryButtons";
 
-function Popular() {
+function TopRated() {
   return (
     <>
       <CategoryButtons />
@@ -14,4 +14,4 @@ function Popular() {
   );
 }
 
-export default Popular;
+export default TopRated;
