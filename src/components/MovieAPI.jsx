@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import PropTypes from "prop-types"; // Import PropTypes for prop validation
 
 function MovieAPI({ updateMovieList }) {
   const getMovie = () => {
