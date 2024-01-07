@@ -1,21 +1,17 @@
-import CategoryButtons from "../components/CategoryButtons";
-// import MovieCard from "../components/MovieCard";
 import MovieAPI from "../components/MovieAPI";
 import { useState } from "react";
 
-function HomePage() {
-  const [movieList, setMovieList] = useState([]);
-
+function MovieCard() {
+  const [popularList, setPopularList] = useState([]);
   const updateMovieList = (list) => {
-    setMovieList(list);
+    setPopularList(list);
   };
   return (
     <>
-      <CategoryButtons />
       <div className="home-container">
         <div className="homecards-container">
-          <MovieAPI updateMovieList={updateMovieList} />
-          {movieList.map((movie) => (
+          <MovieAPI updateMovieList={updateMovieList} limit={12} />
+          {popularList.map((movie) => (
             <div id="img-container" key={movie.id}>
               <img
                 id="card-img"
@@ -30,4 +26,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default MovieCard;

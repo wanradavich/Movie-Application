@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import AboutPage from "../pages/AboutPage";
 import Navbar from "../components/Navbar";
+import Popular from "../pages/Popular";
 
 function AppRouter() {
   return (
@@ -13,6 +14,7 @@ function AppRouter() {
         <Navbar />
         <Routes>
           <Route path="/" exact element={<HomePage />} />
+          <Route path="/Popular" exact element={<Popular />} />
           <Route path="/about" exact element={<AboutPage />} />
         </Routes>
       </div>
