@@ -3,6 +3,7 @@ import { useState } from "react";
 
 function HomePage() {
   const [movieList, setMovieList] = useState([]);
+
   const updateMovieList = (list) => {
     setMovieList(list);
   };
@@ -13,7 +14,7 @@ function HomePage() {
       <h1>HOME TEST</h1>
       {movieList.map((movie) => (
         <img
-          key={movie}
+          key={movie.id}
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
         />

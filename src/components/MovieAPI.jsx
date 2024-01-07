@@ -1,27 +1,21 @@
-// import React, { useEffect } from "react";
 import { useEffect } from "react";
+import PropTypes from "prop-types"; // Import PropTypes for prop validation
 
-function MovieAPI() {
+function MovieAPI({ updateMovieList }) {
   const getMovie = () => {
     fetch(
       "https://api.themoviedb.org/3/discover/movie?api_key=d54e5d8cf2227762d2ed37b16b4ea050"
     )
       .then((res) => res.json())
-      .then((json) => console.log(json.results));
+      .then((json) => updateMovieList(json.results)) // Pass the fetched movie list to the parent component
+      .catch((error) => console.error("Error fetching movies:", error));
   };
+
   useEffect(() => {
     getMovie();
-  }, []);
-  return (
-    <div>
-      {/* {movieList.map((movie) => (
-        <img
-          key={1}
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        />
-      ))} */}
-    </div>
-  );
+  }, [updateMovieList]);
+
+  return null; // Return null or an empty div, as MovieAPI doesn't render any UI
 }
 
 export default MovieAPI;
