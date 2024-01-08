@@ -2,10 +2,10 @@ import CategoryButtons from "../components/CategoryButtons";
 import { useState } from "react";
 import MovieAPI from "../components/MovieAPI";
 
-function HomePage() {
-  const [popularList, setPopularList] = useState([]);
+function TopRated() {
+  const [topRatedList, setTopRatedList] = useState([]);
   const updateMovieList = (list) => {
-    setPopularList(list);
+    setTopRatedList(list);
   };
   return (
     <>
@@ -15,9 +15,9 @@ function HomePage() {
           <MovieAPI
             updateMovieList={updateMovieList}
             limit={12}
-            sortBy="popularity.desc"
+            sortBy="vote_average.desc"
           />
-          {popularList.map((movie) => (
+          {topRatedList.map((movie) => (
             <div id="img-container" key={movie.id}>
               <img
                 id="card-img"
@@ -32,4 +32,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default TopRated;

@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-width: 100vh;
+  background-color: black;
+}
+
+#card-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.category {
+  border-radius: 30px;
+  margin-right: 20px;
+}
+
+#category-btn {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+#img-container {
+  width: 200px;
+  height: auto;
+}
+
+#img-container:hover {
+  cursor: grab;
+}
+
+.home-container {
+  height: 100%;
+  width: 100%;
+}
+
+.homecards-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  width: 70%;
+  margin: 0 auto;
+}
