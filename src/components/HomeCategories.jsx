@@ -5,13 +5,24 @@ function HomeCategories() {
     <div className="home-cat-btn">
       <ul>
         <li>
-          <NavLink to="/toprated">Top Rated</NavLink>
+          <NavLink to="/" className="btn btn-light category">
+            Popular
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/nowplaying">Now Playing</NavLink>
+          <NavLink to="/toprated" className="btn btn-light category">
+            Top Rated
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/upcoming">Upcoming</NavLink>
+          <NavLink to="/nowplaying" className="btn btn-light category">
+            Now Playing
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/upcoming" className="btn btn-light category">
+            Upcoming
+          </NavLink>
         </li>
       </ul>
     </div>
