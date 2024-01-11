@@ -6,41 +6,21 @@ body {
   background-color: black;
 }
 
-#card-img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-.category {
-  border-radius: 30px;
-  margin-right: 20px;
-}
-
-#category-btn {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-
-#img-container {
-  width: 200px;
-  height: auto;
-}
-
-#img-container:hover {
-  cursor: grab;
-}
-
-.home-container {
-  height: 100%;
-  width: 100%;
-}
-
-.homecards-container {
+.movie-list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  width: 70%;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  width: 60%;
   margin: 0 auto;
+}
+
+.movie-img {
+  width: 200px;
+  height: 280px;
+  border-radius: 20px;
+}
+
+.home-cat {
 }

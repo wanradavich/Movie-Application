@@ -1,4 +1,4 @@
-function NowPlaying() {
+function Upcoming() {
   return (
     <>
       <div></div>
@@ -6,4 +6,4 @@ function NowPlaying() {
   );
 }
 
-export default NowPlaying;
+export default Upcoming;

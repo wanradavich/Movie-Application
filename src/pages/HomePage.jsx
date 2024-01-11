@@ -1,32 +1,41 @@
-import CategoryButtons from "../components/CategoryButtons";
-import { useState } from "react";
-import MovieAPI from "../components/MovieAPI";
+import { useEffect, useState } from "react";
+import HomeCategories from "../components/HomeCategories";
 
 function HomePage() {
-  const [popularList, setPopularList] = useState([]);
-  const updateMovieList = (list) => {
-    setPopularList(list);
-  };
+  const [popularMovies, setPopularMovies] = useState([]);
+
+  const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
+  const popular = "https://api.themoviedb.org/3/movie/popular";
+  const baseImageUrl = "https://image.tmdb.org/t/p/w500";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${popular}?api_key=${apiKey}`);
+        const data = await response.json();
+        const popularMovies = data.results;
+        console.log(popularMovies);
+        setPopularMovies(popularMovies);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
-      <CategoryButtons />
-      <div className="home-container">
-        <div className="homecards-container">
-          <MovieAPI
-            updateMovieList={updateMovieList}
-            limit={12}
-            sortBy="popularity.desc"
+      <HomeCategories className="home-cat" />
+      <h2>Popular Movies</h2>
+      <div className="movie-list">
+        {popularMovies.map((movie) => (
+          <img
+            key={movie.id}
+            className="movie-img"
+            src={`${baseImageUrl}${movie.poster_path}`}
+            alt={movie.title}
           />
-          {popularList.map((movie) => (
-            <div id="img-container" key={movie.id}>
-              <img
-                id="card-img"
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-              />
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
     </>
   );

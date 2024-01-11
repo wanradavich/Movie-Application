@@ -1,12 +1,14 @@
 import { useEffect } from "react";
+// import axios from "axios";
 
-function MovieAPI({ updateMovieList, limit, sortBy }) {
+function MovieAPI({ updateMovieList, limit }) {
   useEffect(() => {
     const getMovie = async () => {
       try {
-        const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
+        // const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
         const response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=${sortBy}`
+          // `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=${sortBy}`
+          "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
         );
         const data = await response.json();
         const limitedMovies = data.results
