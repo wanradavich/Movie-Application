@@ -25,8 +25,10 @@ function HomePage() {
 
   return (
     <>
-      <HomeCategories className="home-cat" />
-      <h2>Popular Movies</h2>
+      <div className="home-cat">
+        <HomeCategories />
+      </div>
+      <h2 className="header-title">Popular Movies</h2>
       <div className="movie-list">
         {popularMovies.map((movie) => (
           <img
