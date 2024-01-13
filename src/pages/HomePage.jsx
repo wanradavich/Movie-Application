@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import HomeCategories from "../components/HomeCategories";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function HomePage() {
   const [popularMovies, setPopularMovies] = useState([]);
