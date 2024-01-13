@@ -22,3 +22,4 @@ const AddFave = () => {
 };
 
 export default AddFave;
+

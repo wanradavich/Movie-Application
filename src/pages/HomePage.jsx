@@ -32,12 +32,14 @@ function HomePage() {
       <h2 className="header-title">Popular Movies</h2>
       <div className="movie-list">
         {popularMovies.map((movie) => (
+          <div className="movie-card" key={movie.id}>
           <img
-            key={movie.id}
             className="movie-img"
             src={`${baseImageUrl}${movie.poster_path}`}
             alt={movie.title}
           />
+          <div className="overlay">Overlay Content</div>
+        </div>
         ))}
       </div>
     </>
