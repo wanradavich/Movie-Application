@@ -7,6 +7,8 @@ import WatchList from "../components/WatchList";
 
 function HomePage() {
   const [popularMovies, setPopularMovies] = useState([]);
+  const [faveList, setFaveList] = useState([]);
+  
 
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
   const popular = "https://api.themoviedb.org/3/movie/popular";
@@ -27,6 +29,14 @@ function HomePage() {
     fetchData();
   }, []);
 
+  const handleFaveClick = (movie, isFaved) => {
+    // Add or remove the movie from the favorite list based on the favorite status
+    const updatedFaveList = isFaved
+      ? faveList.filter((m) => m.id !== movie.id)
+      : [...faveList, movie];
+    setFaveList(updatedFaveList);
+  };
+
   return (
     <>
       <div className="home-cat">
@@ -43,7 +53,7 @@ function HomePage() {
             />
             <div className="overlay">
               <div className="overlay-buttons">
-                <AddFave />
+                <AddFave movie={movie} onFaveClick={handleFaveClick} />
                 <WatchList />
               </div> 
             </div>

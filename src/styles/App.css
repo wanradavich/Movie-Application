@@ -58,8 +58,9 @@ body {
 .heart-container svg {
   fill: white; /* Set the initial color to white */
 }
+
 .heart-container:hover svg {
-  fill: red; /* Change the fill color on hover */
+  fill: red; 
 }
 
 .watch-list-container svg {
