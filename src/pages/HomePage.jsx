@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import HomeCategories from "../components/HomeCategories";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddFave from "../components/AddFave";
+import WatchList from "../components/WatchList";
+
 
 function HomePage() {
   const [popularMovies, setPopularMovies] = useState([]);
@@ -41,6 +43,7 @@ function HomePage() {
             />
             <div className="overlay">
               <AddFave />
+              <WatchList />
             </div>
           </div>
         ))}
