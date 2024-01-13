@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import HomeCategories from "../components/HomeCategories";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AddFave from "../components/AddFave";
 
 function HomePage() {
   const [popularMovies, setPopularMovies] = useState([]);
@@ -33,13 +34,15 @@ function HomePage() {
       <div className="movie-list">
         {popularMovies.map((movie) => (
           <div className="movie-card" key={movie.id}>
-          <img
-            className="movie-img"
-            src={`${baseImageUrl}${movie.poster_path}`}
-            alt={movie.title}
-          />
-          <div className="overlay">Overlay Content</div>
-        </div>
+            <img
+              className="movie-img"
+              src={`${baseImageUrl}${movie.poster_path}`}
+              alt={movie.title}
+            />
+            <div className="overlay">
+              <AddFave />
+            </div>
+          </div>
         ))}
       </div>
     </>

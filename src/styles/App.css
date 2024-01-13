@@ -27,19 +27,23 @@ body {
   transition: transform 0.3s ease-in-out;
 }
 
-.movie-img:hover {
-  transform: scale(1.1); 
-}
 
-/* fave button  */
 .movie-card {
   position: relative;
-  overflow: hidden; 
+  /* overflow: hidden;  */
+}
+
+.movie-card:hover img {
+  transform: scale(1.1);
+}
+
+/* fave and watch list button  */
+.movie-card:hover .overlay {
+  opacity: 1;
 }
 
 .movie-card .overlay {
   position: absolute;
-  background: rgba(0, 0, 0, 0.8);
   width: 100%; 
   transition: 0.5s ease;
   opacity: 0;
@@ -49,9 +53,16 @@ body {
   text-align: center;
 }
 
-.movie-card:hover .overlay {
-  opacity: 1;
+.heart-container svg {
+  fill: white; /* Set the initial color to white */
 }
+.heart-container:hover svg {
+  fill: red; /* Change the fill color on hover */
+}
+
+
+
+
 
 .home-cat {
   display: flex;
@@ -70,4 +81,5 @@ body {
   margin-bottom: 30px;
   color: white;
 }
+
 
