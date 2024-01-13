@@ -16,8 +16,8 @@ function AppRouter() {
           <Route path="/toprated" element={<TopRated />} />
           <Route path="/nowplaying" element={<NowPlaying />} />
           <Route path="/upcoming" element={<Upcoming />} />
-          {/* <Route path="/favorites" element={<MyFavoritesPage />} />  */}
-          <Route path="/favorites" element={<MyFavoritesPage faveList={faveList} />} /> 
+          <Route path="/favorites" element={<MyFavoritesPage />} /> 
+          <Route path="/favorites" element={<MyFavoritesPage faveList={faveList} />} />  
         </Routes>
       </div>
     </BrowserRouter>

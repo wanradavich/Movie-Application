@@ -1,5 +1,8 @@
 import HomeCategories from "../components/HomeCategories";
 import WatchList from "../components/WatchList";
+import { connect } from 'react-redux';
+import { removeMovieFromFavorites } from './actions';
+
 
 function FavePage({ faveList }) {
     const baseImageUrl = "https://image.tmdb.org/t/p/w500";
@@ -35,4 +38,15 @@ function FavePage({ faveList }) {
     );
 }
 
-export default FavePage;
+
+
+const mapDispatchToProps = (dispatch) => ({
+    onRemoveFromFavorites: (movieId) => {
+      dispatch(removeMovieFromFavorites(movieId));
+    },
+  });
+  
+  export default connect(null, mapDispatchToProps)(FavePage);
+
+
+  // export default FavePage;

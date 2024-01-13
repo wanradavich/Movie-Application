@@ -3,6 +3,9 @@ import HomeCategories from "../components/HomeCategories";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddFave from "../components/AddFave";
 import WatchList from "../components/WatchList";
+import { connect } from 'react-redux';
+import { addMovieToFavorites, removeMovieFromFavorites } from './actions';
+
 
 
 function HomePage() {
@@ -64,4 +67,21 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+const mapStateToProps = (state) => ({
+  popularMovies: state.popularMovies,
+  faveList: state.faveList,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onFaveClick: (movie, isFaved) => {
+    if (isFaved) {
+      dispatch(addMovieToFavorites(movie));
+    } else {
+      dispatch(removeMovieFromFavorites(movie.id));
+    }
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+
+// export default HomePage;
