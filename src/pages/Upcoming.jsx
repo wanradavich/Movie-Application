@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import HomeCategories from "../components/HomeCategories";
+import AddFave from "../components/AddFave";
+import WatchList from "../components/WatchList";
 
 function Upcoming() {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
@@ -32,16 +34,23 @@ function Upcoming() {
       <h2 className="header-title">Top Rated</h2>
       <div className="movie-list">
         {limitedUpcoming.map((movie) => (
+          <div className="movie-card" key={movie.id}>
           <img
-            key={movie.id}
             className="movie-img"
             src={`${baseImageUrl}${movie.poster_path}`}
             alt={movie.title}
           />
-        ))}
-      </div>
-    </>
-  );
+          <div className="overlay">
+            <div className="overlay-buttons">
+              <AddFave />
+              <WatchList />
+            </div> 
+          </div>
+        </div>
+      ))}
+    </div>
+  </>
+);
 }
 
 export default Upcoming;

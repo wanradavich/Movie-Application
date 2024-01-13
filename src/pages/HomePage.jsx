@@ -42,8 +42,10 @@ function HomePage() {
               alt={movie.title}
             />
             <div className="overlay">
-              <AddFave />
-              <WatchList />
+              <div className="overlay-buttons">
+                <AddFave />
+                <WatchList />
+              </div> 
             </div>
           </div>
         ))}

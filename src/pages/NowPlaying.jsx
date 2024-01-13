@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import HomeCategories from "../components/HomeCategories";
+import AddFave from "../components/AddFave";
+import WatchList from "../components/WatchList";
 
 function NowPlaying() {
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
@@ -32,16 +34,23 @@ function NowPlaying() {
       <h2 className="header-title">Now Playing</h2>
       <div className="movie-list">
         {limitedNowPlaying.map((movie) => (
+          <div className="movie-card" key={movie.id}>
           <img
-            key={movie.id}
             className="movie-img"
             src={`${baseImageUrl}${movie.poster_path}`}
             alt={movie.title}
           />
-        ))}
-      </div>
-    </>
-  );
+          <div className="overlay">
+            <div className="overlay-buttons">
+              <AddFave />
+              <WatchList />
+            </div> 
+          </div>
+        </div>
+      ))}
+    </div>
+  </>
+);
 }
 
 export default NowPlaying;
