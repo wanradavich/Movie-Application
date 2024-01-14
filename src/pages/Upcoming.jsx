@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import HomeCategories from "../components/HomeCategories";
-import fetchUpcomingMoviesSuccess from "../actions/upcomingActions";
+import { fetchUpcomingMoviesSuccess } from "../actions/upcomingActions";
 
 const Upcoming = ({ upcomingMovies, fetchUpcomingMoviesSuccess }) => {
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
