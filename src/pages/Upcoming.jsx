@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { connect } from "react-redux";
 import HomeCategories from "../components/HomeCategories";
+import fetchUpcomingMoviesSuccess from "../actions/upcomingActions";
 
-function Upcoming() {
-  const [upcomingMovies, setUpcomingMovies] = useState([]);
-
+const Upcoming = ({ upcomingMovies, fetchUpcomingMoviesSuccess }) => {
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
   const upcoming = "https://api.themoviedb.org/3/movie/upcoming";
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
@@ -13,9 +13,9 @@ function Upcoming() {
       try {
         const response = await fetch(`${upcoming}?api_key=${apiKey}`);
         const data = await response.json();
-        const upcomingMovies = data.results;
-        console.log(upcomingMovies);
-        setUpcomingMovies(upcomingMovies);
+        const fetchedMovies = data.results;
+        console.log("UC LOG CHECK: ", fetchedMovies);
+        fetchUpcomingMoviesSuccess(fetchedMovies);
       } catch (error) {
         console.log("Error fetching Upcoming movies: ", error);
       }
@@ -23,6 +23,7 @@ function Upcoming() {
 
     fetchData();
   }, []);
+
   const limitedUpcoming = upcomingMovies.slice(0, 12);
   return (
     <>
@@ -42,6 +43,18 @@ function Upcoming() {
       </div>
     </>
   );
-}
+};
 
-export default Upcoming;
+const mapStateToProps = (state) => {
+  console.log("UC CHECK STATE: ", state);
+  return {
+    upcomingMovies: state.upcomingMovies.upcomingMovies || [],
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchUpcomingMoviesSuccess: (movies) =>
+    dispatch(fetchUpcomingMoviesSuccess(movies)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Upcoming);
