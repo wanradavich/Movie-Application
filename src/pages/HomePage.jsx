@@ -25,19 +25,20 @@ const HomePage = ({ popularMovies, fetchPopularMoviesSuccess }) => {
 
     fetchData();
   }, []);
+  
   const limitedPopular = popularMovies.slice(0, 12);
 
-  // const addToWatchList = (movie) => {
-  //   const watchlistMovies =
-  //     JSON.parse(localStorage.getItem("watchlistMovies")) || [];
+  const addToWatchList = (movie) => {
+    const watchlistMovies =
+      JSON.parse(localStorage.getItem("watchlistMovies")) || [];
 
-  //   if (
-  //     !watchlistMovies.some((watchlistMovie) => watchlistMovie.id === movie.id)
-  //   ) {
-  //     watchlistMovies.push(movie);
-  //     localStorage.setItem("watchlistMovies", JSON.stringify(watchlistMovies));
-  //   }
-  // };
+    if (
+      !watchlistMovies.some((watchlistMovie) => watchlistMovie.id === movie.id)
+    ) {
+      watchlistMovies.push(movie);
+      localStorage.setItem("watchlistMovies", JSON.stringify(watchlistMovies));
+    }
+  };
 
   return (
     <>
@@ -57,15 +58,9 @@ const HomePage = ({ popularMovies, fetchPopularMoviesSuccess }) => {
               <div className="overlay">
                 <div className="overlay-buttons">
                   <AddFave />
-                  <WatchList / >
+                  <WatchList movie={movie} onClick={() => addToWatchList(movie)}/>
                 </div> 
               </div>
-              {/* <button
-                className="btn btn-warning"
-                onClick={() => addToWatchList(movie)}
-              >
-                Add to Watchlist
-              </button> */}
             </div>
           ))
         ) : (
