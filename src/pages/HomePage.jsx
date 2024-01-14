@@ -2,6 +2,10 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import HomeCategories from "../components/HomeCategories";
 import { fetchPopularMoviesSuccess } from "../actions/popularActions";
+import AddFave from "../components/AddFave";
+import WatchList from "../components/WatchList";
+import { addToWatchList } from "../utilities/addToWatchList";
+import { addToFave } from "../utilities/addToFave"; 
 
 const HomePage = ({ popularMovies, fetchPopularMoviesSuccess }) => {
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
@@ -23,19 +27,9 @@ const HomePage = ({ popularMovies, fetchPopularMoviesSuccess }) => {
 
     fetchData();
   }, []);
+  
   const limitedPopular = popularMovies.slice(0, 12);
 
-  const addToWatchList = (movie) => {
-    const watchlistMovies =
-      JSON.parse(localStorage.getItem("watchlistMovies")) || [];
-
-    if (
-      !watchlistMovies.some((watchlistMovie) => watchlistMovie.id === movie.id)
-    ) {
-      watchlistMovies.push(movie);
-      localStorage.setItem("watchlistMovies", JSON.stringify(watchlistMovies));
-    }
-  };
   return (
     <>
       <div className="home-cat">
@@ -45,18 +39,18 @@ const HomePage = ({ popularMovies, fetchPopularMoviesSuccess }) => {
       <div className="movie-list">
         {limitedPopular.length > 0 ? (
           limitedPopular.map((movie) => (
-            <div key={movie.id}>
+            <div className="movie-card" key={movie.id}>
               <img
                 className="movie-img"
                 src={`${baseImageUrl}${movie.poster_path}`}
                 alt={movie.title}
               />
-              <button
-                className="btn btn-warning"
-                onClick={() => addToWatchList(movie)}
-              >
-                Add to Watchlist
-              </button>
+              <div className="overlay">
+                <div className="overlay-buttons">
+                  <AddFave movie={movie} onClick={() => addToFave(movie)} />
+                  <WatchList movie={movie} onClick={() => addToWatchList(movie)}/>
+                </div> 
+              </div>
             </div>
           ))
         ) : (

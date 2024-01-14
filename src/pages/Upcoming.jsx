@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import HomeCategories from "../components/HomeCategories";
 import { fetchUpcomingMoviesSuccess } from "../actions/upcomingActions";
+import AddFave from "../components/AddFave";
+import WatchList from "../components/WatchList";
+import { addToWatchList } from "../utilities/addToWatchList";
 
 const Upcoming = ({ upcomingMovies, fetchUpcomingMoviesSuccess }) => {
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
@@ -33,17 +36,24 @@ const Upcoming = ({ upcomingMovies, fetchUpcomingMoviesSuccess }) => {
       <h2 className="header-title">Top Rated</h2>
       <div className="movie-list">
         {limitedUpcoming.map((movie) => (
-          <img
-            key={movie.id}
-            className="movie-img"
-            src={`${baseImageUrl}${movie.poster_path}`}
-            alt={movie.title}
-          />
+          <div className="movie-card" key={movie.id}>
+            <img
+                className="movie-img"
+                src={`${baseImageUrl}${movie.poster_path}`}
+                alt={movie.title}
+              />
+            <div className="overlay">
+              <div className="overlay-buttons">
+                <AddFave />
+                <WatchList movie={movie} onClick={() => addToWatchList(movie)}/>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </>
   );
-};
+}
 
 const mapStateToProps = (state) => {
   console.log("UC CHECK STATE: ", state);

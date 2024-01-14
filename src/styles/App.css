@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -10,7 +14,7 @@ body {
 .movie-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 30px;
   list-style: none;
   padding: 0;
   width: 60%;
@@ -18,9 +22,53 @@ body {
 }
 
 .movie-img {
-  width: 200px;
-  height: 280px;
+  width: 100%; 
+  height: auto; 
   border-radius: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+.movie-card {
+  position: relative;
+  /* overflow: hidden;  */
+}
+
+.movie-card:hover img {
+  transform: scale(1.1);
+}
+
+/* fave and watch list button  */
+.movie-card:hover .overlay {
+  opacity: 1;
+}
+
+.movie-card .overlay {
+  position: absolute;
+  transition: 0.5s ease;
+  opacity: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.overlay-buttons {
+  display: flex;
+  gap: 10px; /* Adjust the gap as needed */
+}
+
+.heart-container svg {
+  fill: white; /* Set the initial color to white */
+}
+.heart-container:hover svg {
+  fill: red; /* Change the fill color on hover */
+}
+
+
+.watch-list-container svg {
+  fill: white; /* Set the initial color to white */
+}
+.watch-list-container:hover svg {
+  fill: lightseagreen; /* Change the fill color on hover */
 }
 
 .home-cat {
