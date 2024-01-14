@@ -1,4 +1,4 @@
-const WatchList = ({ movie, onClick }) => {
+const AddWatchList = ({ movie, onClick }) => {
     const handleWatchListClick = () => {
       onClick(movie);
     };
@@ -19,5 +19,5 @@ const WatchList = ({ movie, onClick }) => {
   };
 
   
-  export default WatchList;
+  export default AddWatchList;
   

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import HomeCategories from "../components/HomeCategories";
 import { fetchNowPlayingMoviesSuccess } from "../actions/nowPlayingActions";
 import AddFave from "../components/AddFave";
-import WatchList from "../components/WatchList";
+import AddWatchList from "../components/AddWatchList";
 import { addToWatchList } from "../utilities/addToWatchList";
 
 const NowPlaying = ({ nowPlayingMovies, fetchNowPlayingMoviesSuccess }) => {
@@ -44,7 +44,7 @@ const NowPlaying = ({ nowPlayingMovies, fetchNowPlayingMoviesSuccess }) => {
           <div className="overlay">
               <div className="overlay-buttons">
                 <AddFave />
-                <WatchList movie={movie} onClick={() => addToWatchList(movie)}/>
+                <AddWatchList movie={movie} onClick={() => addToWatchList(movie)}/>
               </div> 
           </div>
           </div>
