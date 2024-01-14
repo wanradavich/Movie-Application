@@ -5,11 +5,13 @@ const FaveList = () => {
 
     return (
       <div>
-        <h2>My Favorites List</h2>
+        <h2 className="header-title">My Favorites</h2>
+        <div className="movie-list">
         {faveMovies.length > 0 ? (
           faveMovies.map((movie) => (
-            <div key={movie.id}>
+            <div className="movie-card" key={movie.id}>
               <img
+              className="movie-img"
                 src={
                   movie.poster_path
                     ? `${baseImageUrl}${movie.poster_path}`
@@ -17,15 +19,16 @@ const FaveList = () => {
                 }
                 alt={movie.title}
               />
-              <h3>{movie.title}</h3>
+              {/* <h3>{movie.title}</h3>
               <p>Release Date: {movie.release_date}</p>
               <p>Rating: {movie.vote_average}%</p>
-              <p>{movie.overview}</p>
+              <p>{movie.overview}</p> */}
             </div>
           ))
         ) : (
           <p>Sorry, you have no movies in your favorites.</p>
         )}
+      </div>
       </div>
     );
   };
