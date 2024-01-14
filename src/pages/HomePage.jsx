@@ -25,6 +25,17 @@ const HomePage = ({ popularMovies, fetchPopularMoviesSuccess }) => {
   }, []);
   const limitedPopular = popularMovies.slice(0, 12);
 
+  const addToWatchList = (movie) => {
+    const watchlistMovies =
+      JSON.parse(localStorage.getItem("watchlistMovies")) || [];
+
+    if (
+      !watchlistMovies.some((watchlistMovie) => watchlistMovie.id === movie.id)
+    ) {
+      watchlistMovies.push(movie);
+      localStorage.setItem("watchlistMovies", JSON.stringify(watchlistMovies));
+    }
+  };
   return (
     <>
       <div className="home-cat">
@@ -34,12 +45,19 @@ const HomePage = ({ popularMovies, fetchPopularMoviesSuccess }) => {
       <div className="movie-list">
         {limitedPopular.length > 0 ? (
           limitedPopular.map((movie) => (
-            <img
-              key={movie.id}
-              className="movie-img"
-              src={`${baseImageUrl}${movie.poster_path}`}
-              alt={movie.title}
-            />
+            <div key={movie.id}>
+              <img
+                className="movie-img"
+                src={`${baseImageUrl}${movie.poster_path}`}
+                alt={movie.title}
+              />
+              <button
+                className="btn btn-warning"
+                onClick={() => addToWatchList(movie)}
+              >
+                Add to Watchlist
+              </button>
+            </div>
           ))
         ) : (
           <p>Loading...</p>
