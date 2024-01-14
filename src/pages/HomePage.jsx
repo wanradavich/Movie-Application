@@ -38,7 +38,7 @@ const HomePage = ({ popularMovies, fetchPopularMoviesSuccess }) => {
   //     localStorage.setItem("watchlistMovies", JSON.stringify(watchlistMovies));
   //   }
   // };
-  
+
   return (
     <>
       <div className="home-cat">
@@ -57,7 +57,7 @@ const HomePage = ({ popularMovies, fetchPopularMoviesSuccess }) => {
               <div className="overlay">
                 <div className="overlay-buttons">
                   <AddFave />
-                  <WatchList />
+                  <WatchList / >
                 </div> 
               </div>
               {/* <button
