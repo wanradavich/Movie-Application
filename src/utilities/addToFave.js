@@ -8,6 +8,7 @@
 //     }
 //   };
 
+///////////////////
 
 export const addToFave = (movie) => {
     const faveMovies =
@@ -27,4 +28,6 @@ export const addToFave = (movie) => {
   
     localStorage.setItem("faveMovies", JSON.stringify(faveMovies));
   };
+
+  
   

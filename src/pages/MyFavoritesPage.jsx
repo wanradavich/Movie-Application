@@ -1,3 +1,8 @@
+// import AddFave from "../components/AddFave";
+// import WatchList from "../components/WatchList";
+// import { addToWatchList } from "../utilities/addToWatchList";
+// import { addToFave } from "../utilities/addToFave"; 
+
 const FaveList = () => {
     const baseImageUrl = "https://image.tmdb.org/t/p/w500";
     const faveMovies =
@@ -19,6 +24,12 @@ const FaveList = () => {
                 }
                 alt={movie.title}
               />
+              {/* <div className="overlay">
+                <div className="overlay-buttons">
+                  <AddFave movie={movie} onClick={() => addToFave(movie)} />
+                  <WatchList movie={movie} onClick={() => addToWatchList(movie)}/>
+                </div> 
+              </div> */}
               {/* <h3>{movie.title}</h3>
               <p>Release Date: {movie.release_date}</p>
               <p>Rating: {movie.vote_average}%</p>
