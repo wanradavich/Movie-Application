@@ -4,6 +4,7 @@ import HomeCategories from "../components/HomeCategories";
 import { fetchNowPlayingMoviesSuccess } from "../actions/nowPlayingActions";
 import AddFave from "../components/AddFave";
 import WatchList from "../components/WatchList";
+import { addToWatchList } from "../utilities/addToWatchList";
 
 const NowPlaying = ({ nowPlayingMovies, fetchNowPlayingMoviesSuccess }) => {
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
@@ -43,7 +44,7 @@ const NowPlaying = ({ nowPlayingMovies, fetchNowPlayingMoviesSuccess }) => {
           <div className="overlay">
               <div className="overlay-buttons">
                 <AddFave />
-                <WatchList />
+                <WatchList movie={movie} onClick={() => addToWatchList(movie)}/>
               </div> 
           </div>
           </div>

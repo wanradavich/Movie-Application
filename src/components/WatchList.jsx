@@ -20,6 +20,7 @@ const WatchList = ({ movie, onClick }) => {
       </div>
     );
   };
+
   
   export default WatchList;
   

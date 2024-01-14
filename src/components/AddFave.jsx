@@ -1,6 +1,10 @@
-const AddFave = () => {
+const AddFave = ({ movie, onClick }) => {
+    const handleFaveClick = () => {
+      onClick(movie);
+    };
+
     return (
-        <div className="heart-container">
+        <div className="heart-container" onClick={handleFaveClick}>
             <span className="mr-2 text-white"></span>
             <svg
                 xmlns="http://www.w3.org/2000/svg"

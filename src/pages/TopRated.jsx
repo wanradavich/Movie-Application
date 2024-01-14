@@ -4,6 +4,7 @@ import HomeCategories from "../components/HomeCategories";
 import { fetchTopRatedMoviesSuccess } from "../actions/topRatedActions";
 import AddFave from "../components/AddFave";
 import WatchList from "../components/WatchList";
+import { addToWatchList } from "../utilities/addToWatchList";
 
 const TopRated = ({ topRatedMovies, fetchTopRatedMoviesSuccess }) => {
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
@@ -44,15 +45,9 @@ const TopRated = ({ topRatedMovies, fetchTopRatedMoviesSuccess }) => {
               <div className="overlay">
                 <div className="overlay-buttons">
                   <AddFave />
-                  <WatchList />
+                  <WatchList movie={movie} onClick={() => addToWatchList(movie)}/>
                 </div> 
               </div>
-              {/* <button
-                className="btn btn-warning"
-                onClick={() => addToWatchList(movie)}
-              >
-                Add to Watchlist
-              </button> */}
             </div>
           ))
         ) : (

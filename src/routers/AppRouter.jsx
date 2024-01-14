@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import AboutPage from "../pages/AboutPage";
 import Footer from "../components/Footer";
 import WatchList from "../pages/MyWatchListPage";
+import FaveList from "../pages/MyFavoritesPage";
 
 function AppRouter() {
   return (
@@ -20,6 +21,7 @@ function AppRouter() {
           <Route path="/toprated" exact element={<TopRated />} />
           <Route path="/nowplaying" exact element={<NowPlaying />} />
           <Route path="/upcoming" exact element={<Upcoming />} />
+          <Route path="/myfavorites" exact element={<FaveList />} />
         </Routes>
         <Footer />
       </div>
