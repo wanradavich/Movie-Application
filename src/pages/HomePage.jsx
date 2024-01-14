@@ -23,6 +23,7 @@ const HomePage = ({ popularMovies, fetchPopularMoviesSuccess }) => {
 
     fetchData();
   }, []);
+  const limitedPopular = popularMovies.slice(0, 12);
 
   return (
     <>
@@ -31,8 +32,8 @@ const HomePage = ({ popularMovies, fetchPopularMoviesSuccess }) => {
       </div>
       <h2 className="header-title">Popular Movies</h2>
       <div className="movie-list">
-        {popularMovies.length > 0 ? (
-          popularMovies.map((movie) => (
+        {limitedPopular.length > 0 ? (
+          limitedPopular.map((movie) => (
             <img
               key={movie.id}
               className="movie-img"
@@ -51,7 +52,7 @@ const HomePage = ({ popularMovies, fetchPopularMoviesSuccess }) => {
 const mapStateToProps = (state) => {
   console.log("CHECK STATE", state); // logging entire state check
   return {
-    popularMovies: state.popular?.popularMovies || [],
+    popularMovies: state.popularMovies.popularMovies || [],
   };
 };
 

@@ -9,11 +9,6 @@ const popularReducer = (state = initialState, action) => {
         ...state,
         popularMovies: action.payload,
       };
-    case "SET_POPULAR_MOVIES":
-      return {
-        ...state,
-        popularMovies: action.payload,
-      };
     default:
       return state;
   }

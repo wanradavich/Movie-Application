@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { connect } from "react-redux";
 import HomeCategories from "../components/HomeCategories";
+import { fetchNowPlayingMoviesSuccess } from "../actions/nowPlayingActions";
 
-function NowPlaying() {
-  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
-
+const NowPlaying = ({ nowPlayingMovies, fetchNowPlayingMoviesSuccess }) => {
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
   const nowPlaying = "https://api.themoviedb.org/3/movie/now_playing";
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
@@ -15,7 +15,7 @@ function NowPlaying() {
         const data = await response.json();
         const nowPlayingMovies = data.results;
         console.log(nowPlaying);
-        setNowPlayingMovies(nowPlayingMovies);
+        fetchNowPlayingMoviesSuccess(nowPlayingMovies);
       } catch (error) {
         console.log(error);
       }
@@ -42,6 +42,18 @@ function NowPlaying() {
       </div>
     </>
   );
-}
+};
 
-export default NowPlaying;
+const mapStateToProps = (state) => {
+  console.log("NP CHECK STATE", state);
+  return {
+    nowPlayingMovies: state.nowPlayingMovies.nowPlayingMovies || [],
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchNowPlayingMoviesSuccess: (movies) =>
+    dispatch(fetchNowPlayingMoviesSuccess(movies)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NowPlaying);
