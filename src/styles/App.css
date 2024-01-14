@@ -6,6 +6,7 @@ body {
   background-color: black;
 }
 
+/* home */
 .movie-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -36,6 +37,69 @@ body {
 .header-title {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: white;
+}
+
+/* about */
+#about-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+#about-title {
+  color: whitesmoke;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 80px;
+  font-size: 50px;
+}
+
+/* font-size:11px */
+.tmdb-reference > p {
+  font-size: 18px;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* desktop width: 100px; */
+#tmdb-logo {
+  width: 150px;
+  height: auto;
+  margin-right: 30px;
+}
+
+/* tablet and desktop media size: 300px w/h */
+#about-logo {
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+  margin-bottom: 100px;
+}
+
+/* font-size: 12px; */
+#footer {
+  color: rgb(188, 227, 238);
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.about-desc {
+  width: 70%;
+  padding-bottom: 250px;
+  margin: 0 auto;
+  color: whitesmoke;
+  line-height: 50px;
+  text-align: center;
+  font-size: 30px;
 }
