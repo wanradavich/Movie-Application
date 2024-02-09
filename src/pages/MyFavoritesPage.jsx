@@ -1,62 +1,44 @@
-import { useState, useEffect } from "react";
-import AddFave from "../components/AddFave";
-import AddWatchList from "../components/AddWatchList";
-import { addToWatchList } from "../utilities/addToWatchList";
-import { addToFave } from "../utilities/addToFave";
+import { connect } from "react-redux";
+import { removeFromFavorites } from "../actions/favoritesActions";
 
-const FaveList = () => {
+const FavoritesPage = ({ favorites, removeFromFavorites }) => {
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
 
-  // State to manage favorite movies
-  const [faveMovies, setFaveMovies] = useState(
-    JSON.parse(localStorage.getItem("faveMovies")) || []
-  );
-
-  useEffect(() => {
-    // Update the state when local storage changes
-    setFaveMovies(JSON.parse(localStorage.getItem("faveMovies")) || []);
-  }, []);
-
-  const handleAddToFave = (movie) => {
-    addToFave(movie);
-    // Manually update the state to trigger re-render
-    setFaveMovies(JSON.parse(localStorage.getItem("faveMovies")) || []);
+  const handleRemoveFromFavorites = (movieId) => {
+    removeFromFavorites(movieId);
+    console.log("Removing from favorites:", movieId);
   };
-
 
   return (
     <div>
-      <h2 className="header-title">My Favorites</h2>
+      <h2>My Favorites</h2>
       <div className="movie-list">
-        {faveMovies.length > 0 ? (
-          faveMovies.map((movie) => (
+        {favorites.length > 0 ? (
+          favorites.map((movie) => (
             <div className="movie-card" key={movie.id}>
               <img
                 className="movie-img"
-                src={
-                  movie.poster_path
-                    ? `${baseImageUrl}${movie.poster_path}`
-                    : "No Image Provided by API"
-                }
+                src={`${baseImageUrl}${movie.poster_path}`}
                 alt={movie.title}
               />
-              <div className="overlay">
-                <div className="overlay-buttons">
-                  <AddFave
-                    movie={movie}
-                    onClick={() => handleAddToFave(movie)}
-                  />
-                  <AddWatchList movie={movie} onClick={() => addToWatchList(movie)}/>
-                </div>
+              <div>
+                <p>{movie.title}</p>
+                <button onClick={() => handleRemoveFromFavorites(movie.id)}>
+                  Remove from Favorites
+                </button>
               </div>
             </div>
           ))
         ) : (
-          <p>Sorry, you have no movies in your favorites.</p>
+          <p>No favorite movies</p>
         )}
       </div>
     </div>
   );
 };
 
-export default FaveList;
+const mapStateToProps = (state) => ({
+  favorites: state.favorites,
+});
+
+export default connect(mapStateToProps, { removeFromFavorites })(FavoritesPage);

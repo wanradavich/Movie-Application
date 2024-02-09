@@ -6,8 +6,8 @@ import Upcoming from "../pages/Upcoming";
 import Navbar from "../components/Navbar";
 import AboutPage from "../pages/AboutPage";
 import Footer from "../components/Footer";
-import WatchList from "../pages/MyWatchListPage";
-import FaveList from "../pages/MyFavoritesPage";
+import MyWatchListPage from "../pages/MyWatchListPage";
+import MyFavoritesPage from "../pages/MyFavoritesPage";
 
 function AppRouter() {
   return (
@@ -17,11 +17,11 @@ function AppRouter() {
         <Routes>
           <Route path="/" exact element={<HomePage />} />
           <Route path="/about" exact element={<AboutPage />} />
-          <Route path="/watchlist" exact element={<WatchList />} />
           <Route path="/toprated" exact element={<TopRated />} />
           <Route path="/nowplaying" exact element={<NowPlaying />} />
           <Route path="/upcoming" exact element={<Upcoming />} />
-          <Route path="/myfavorites" exact element={<FaveList />} />
+          <Route path="/watchlist" exact element={<MyWatchListPage />} />
+          <Route path="/favorites" exact element={<MyFavoritesPage />} />
         </Routes>
         <Footer />
       </div>

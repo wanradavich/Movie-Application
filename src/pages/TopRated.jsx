@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import { connect } from "react-redux";
+import { useEffect, useState } from "react";
 import HomeCategories from "../components/HomeCategories";
-import { fetchTopRatedMoviesSuccess } from "../actions/topRatedActions";
-import AddFave from "../components/AddFave";
-import AddWatchList from "../components/AddWatchList";
-import { addToWatchList } from "../utilities/addToWatchList";
+import { addToFavorites } from "../actions/favoritesActions";
+import { addToWatchlist } from "../actions/watchlistActions";
+import { connect } from "react-redux";
 
-const TopRated = ({ topRatedMovies, fetchTopRatedMoviesSuccess }) => {
+const TopRated = ({ addToFavorites, addToWatchlist }) => {
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
   const topRated = "https://api.themoviedb.org/3/movie/top_rated";
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
@@ -18,14 +17,23 @@ const TopRated = ({ topRatedMovies, fetchTopRatedMoviesSuccess }) => {
         const data = await response.json();
         const fetchedMovies = data.results;
         console.log("TR LOG CHECK", fetchedMovies);
-        fetchTopRatedMoviesSuccess(fetchedMovies);
+        setTopRatedMovies(fetchedMovies);
       } catch (error) {
-        console.log("Error fetching Top Rated movies: ", error);
+        console.error("Error fetching Top Rated movies: ", error);
       }
     };
     fetchData();
   }, []);
+
   const limitedTopRated = topRatedMovies.slice(0, 12);
+
+  const handleAddToFavorites = (movie) => {
+    addToFavorites(movie);
+  };
+
+  const handleAddToWatchlist = (movie) => {
+    addToWatchlist(movie);
+  };
 
   return (
     <>
@@ -42,11 +50,13 @@ const TopRated = ({ topRatedMovies, fetchTopRatedMoviesSuccess }) => {
                 src={`${baseImageUrl}${movie.poster_path}`}
                 alt={movie.title}
               />
-              <div className="overlay">
-                <div className="overlay-buttons">
-                  <AddFave />
-                  <AddWatchList movie={movie} onClick={() => addToWatchList(movie)}/>
-                </div> 
+              <div>
+                <button onClick={() => handleAddToFavorites(movie)}>
+                  Add to Favorites
+                </button>
+                <button onClick={() => handleAddToWatchlist(movie)}>
+                  Add to Watchlist
+                </button>
               </div>
             </div>
           ))
@@ -58,16 +68,6 @@ const TopRated = ({ topRatedMovies, fetchTopRatedMoviesSuccess }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log("CHECK STATE", state); // logging entire state check
-  return {
-    topRatedMovies: state.topRatedMovies.topRatedMovies || [],
-  };
-};
+export default connect(null, { addToFavorites, addToWatchlist })(TopRated);
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchTopRatedMoviesSuccess: (movies) =>
-    dispatch(fetchTopRatedMoviesSuccess(movies)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TopRated);
+// export default TopRated;

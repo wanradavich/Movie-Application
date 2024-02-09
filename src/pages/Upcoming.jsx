@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import { connect } from "react-redux";
+import { useEffect, useState } from "react";
 import HomeCategories from "../components/HomeCategories";
-import { fetchUpcomingMoviesSuccess } from "../actions/upcomingActions";
-import AddFave from "../components/AddFave";
-import AddWatchList from "../components/AddWatchList";
-import { addToWatchList } from "../utilities/addToWatchList";
+import { addToFavorites } from "../actions/favoritesActions";
+import { addToWatchlist } from "../actions/watchlistActions";
+import { connect } from "react-redux";
 
-const Upcoming = ({ upcomingMovies, fetchUpcomingMoviesSuccess }) => {
+const Upcoming = ({ addToFavorites, addToWatchlist }) => {
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
   const upcoming = "https://api.themoviedb.org/3/movie/upcoming";
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
@@ -18,9 +17,9 @@ const Upcoming = ({ upcomingMovies, fetchUpcomingMoviesSuccess }) => {
         const data = await response.json();
         const fetchedMovies = data.results;
         console.log("UC LOG CHECK: ", fetchedMovies);
-        fetchUpcomingMoviesSuccess(fetchedMovies);
+        setUpcomingMovies(fetchedMovies);
       } catch (error) {
-        console.log("Error fetching Upcoming movies: ", error);
+        console.error("Error fetching Upcoming movies: ", error);
       }
     };
 
@@ -28,43 +27,43 @@ const Upcoming = ({ upcomingMovies, fetchUpcomingMoviesSuccess }) => {
   }, []);
 
   const limitedUpcoming = upcomingMovies.slice(0, 12);
+
+  const handleAddToFavorites = (movie) => {
+    addToFavorites(movie);
+  };
+
+  const handleAddToWatchlist = (movie) => {
+    addToWatchlist(movie);
+  };
+
   return (
     <>
       <div className="home-cat">
         <HomeCategories />
       </div>
-      <h2 className="header-title">Top Rated</h2>
+      <h2 className="header-title">Upcoming Movies</h2>
       <div className="movie-list">
         {limitedUpcoming.map((movie) => (
           <div className="movie-card" key={movie.id}>
             <img
-                className="movie-img"
-                src={`${baseImageUrl}${movie.poster_path}`}
-                alt={movie.title}
-              />
-            <div className="overlay">
-              <div className="overlay-buttons">
-                <AddFave />
-                <AddWatchList movie={movie} onClick={() => addToWatchList(movie)}/>
-              </div>
+              className="movie-img"
+              src={`${baseImageUrl}${movie.poster_path}`}
+              alt={movie.title}
+            />
+            <div>
+              <button onClick={() => handleAddToFavorites(movie)}>
+                Add to Favorites
+              </button>
+              <button onClick={() => handleAddToWatchlist(movie)}>
+                Add to Watchlist
+              </button>
             </div>
           </div>
         ))}
       </div>
     </>
   );
-}
-
-const mapStateToProps = (state) => {
-  console.log("UC CHECK STATE: ", state);
-  return {
-    upcomingMovies: state.upcomingMovies.upcomingMovies || [],
-  };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchUpcomingMoviesSuccess: (movies) =>
-    dispatch(fetchUpcomingMoviesSuccess(movies)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Upcoming);
+export default connect(null, { addToFavorites, addToWatchlist })(Upcoming);
+// export default Upcoming;
