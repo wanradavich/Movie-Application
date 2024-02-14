@@ -1,14 +1,10 @@
 import { combineReducers } from "redux";
-import popularReducer from "./popularReducer";
-import topRatedReducer from "./topRatedReducer";
-import nowPlayingReducer from "./nowPlayingReducer";
-import upcomingReducer from "./upcomingReducer";
+import favoritesReducer from "./favoritesReducer";
+import watchlistReducer from "./watchlistReducer";
 
 const rootReducer = combineReducers({
-  popularMovies: popularReducer,
-  topRatedMovies: topRatedReducer,
-  nowPlayingMovies: nowPlayingReducer,
-  upcomingMovies: upcomingReducer,
+  favorites: favoritesReducer,
+  watchlist: watchlistReducer,
 });
 
 export default rootReducer;

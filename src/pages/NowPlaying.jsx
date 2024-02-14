@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import { connect } from "react-redux";
+import { useEffect, useState } from "react";
 import HomeCategories from "../components/HomeCategories";
-import { fetchNowPlayingMoviesSuccess } from "../actions/nowPlayingActions";
-import AddFave from "../components/AddFave";
-import AddWatchList from "../components/AddWatchList";
-import { addToWatchList } from "../utilities/addToWatchList";
+import { addToFavorites } from "../actions/favoritesActions";
+import { addToWatchlist } from "../actions/watchlistActions";
+import { connect } from "react-redux";
 
-const NowPlaying = ({ nowPlayingMovies, fetchNowPlayingMoviesSuccess }) => {
+const NowPlaying = ({ addToFavorites, addToWatchlist }) => {
+  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
   const nowPlaying = "https://api.themoviedb.org/3/movie/now_playing";
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
@@ -16,17 +15,27 @@ const NowPlaying = ({ nowPlayingMovies, fetchNowPlayingMoviesSuccess }) => {
       try {
         const response = await fetch(`${nowPlaying}?api_key=${apiKey}`);
         const data = await response.json();
-        const nowPlayingMovies = data.results;
-        console.log(nowPlaying);
-        fetchNowPlayingMoviesSuccess(nowPlayingMovies);
+        const nowPlayingMoviesData = data.results;
+        console.log(nowPlayingMoviesData);
+        setNowPlayingMovies(nowPlayingMoviesData);
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching now playing movies:", error);
       }
     };
+
     fetchData();
   }, []);
 
   const limitedNowPlaying = nowPlayingMovies.slice(0, 12);
+
+  const handleAddToFavorites = (movie) => {
+    addToFavorites(movie);
+  };
+
+  const handleAddToWatchlist = (movie) => {
+    addToWatchlist(movie);
+  };
+
   return (
     <>
       <div className="home-cat">
@@ -41,29 +50,20 @@ const NowPlaying = ({ nowPlayingMovies, fetchNowPlayingMoviesSuccess }) => {
               src={`${baseImageUrl}${movie.poster_path}`}
               alt={movie.title}
             />
-          <div className="overlay">
-              <div className="overlay-buttons">
-                <AddFave />
-                <AddWatchList movie={movie} onClick={() => addToWatchList(movie)}/>
-              </div> 
-          </div>
+            <div>
+              <button onClick={() => handleAddToFavorites(movie)}>
+                Add to Favorites
+              </button>
+              <button onClick={() => handleAddToWatchlist(movie)}>
+                Add to Watchlist
+              </button>
+            </div>
           </div>
         ))}
       </div>
     </>
   );
-}
-          
-const mapStateToProps = (state) => {
-  console.log("NP CHECK STATE", state);
-  return {
-    nowPlayingMovies: state.nowPlayingMovies.nowPlayingMovies || [],
-  };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchNowPlayingMoviesSuccess: (movies) =>
-    dispatch(fetchNowPlayingMoviesSuccess(movies)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(NowPlaying);
+export default connect(null, { addToFavorites, addToWatchlist })(NowPlaying);
+// export default NowPlaying;
