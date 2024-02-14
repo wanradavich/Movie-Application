@@ -2,8 +2,9 @@ import {
   ADD_TO_FAVORITES,
   REMOVE_FROM_FAVORITES,
 } from "../actions/favoritesActions";
+// import { getFavoritesFromLocalStorage } from "../utils/localStorage";
 
-const initialState = []; // if I do getFavoritesFromLocalStorage() to initialize it here it breaks the app;
+const initialState = [];
 const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_FAVORITES:

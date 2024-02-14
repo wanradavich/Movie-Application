@@ -2,6 +2,7 @@ import {
   ADD_TO_WATCHLIST,
   REMOVE_FROM_WATCHLIST,
 } from "../actions/watchlistActions";
+// import { getWatchlistFromLocalStorage } from "../utils/localStorage";
 
 const initialState = [];
 

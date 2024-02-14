@@ -10,14 +10,214 @@ body {
   background-color: black;
 }
 
+/* nav */
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.main-nav.scrolled {
+  background-color: black;
+}
+
+#logo {
+  width: 80px;
+  height: auto;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 0px 20px;
+}
+
+#logo {
+  transition: all 0.2s ease-in-out;
+}
+
+#logo:hover {
+  transform: scale(1.2);
+}
+
+#avatar {
+  width: 80px;
+  height: auto;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 0px 20px;
+}
+
+#nav-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+#nav-list > li {
+  font-size: 25px;
+  color: white;
+}
+
+#nav-list li a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link {
+  transition: all 0.2s ease-in-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+.nav-link:hover {
+  transform: scale(1.1);
+}
+
 /* home */
+/* banner */
+.nav-link {
+  font-size: 18px;
+}
+.movie-details {
+  z-index: 100;
+  position: absolute;
+  background-color: white;
+}
+
 .movie-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   list-style: none;
   padding: 0;
-  width: 60%;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+.big-movie-picture {
+  width: 100%; /* Make the banner stretch across the entire width */
+  max-height: 400px; /* Let the height adjust proportionally based on the image */
+  overflow: hidden; /* Hide any overflow content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.big-movie-picture img {
+  width: 100%; /* Ensure the image stretches to fill the container */
+  height: auto; /* Allow the height to adjust proportionally */
+  display: block; /* Ensure the image doesn't leave any white spaces */
+}
+
+#banner-card {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.banner-desc {
+  color: white;
+  max-width: 50%;
+  padding: 50px;
+  margin: 80px 0px 100px 100px;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  font-size: 14px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+.banner-desc > p {
+  max-height: 80px;
+  overflow: hidden;
+}
+
+.big-movie-picture {
+  position: relative;
+  overflow: hidden; /* Ensure the gradient doesn't overflow */
+}
+
+.big-movie-picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.banner-button {
+  display: flex;
+  justify-content: left;
+}
+
+.banner-play-button {
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+#play {
+  margin: 5px;
+}
+
+.banner-info-button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.banner-info-button:hover {
+  background-color: rgb(222, 39, 39);
+  border: none;
+}
+
+#info {
+  margin-left: 5px;
+}
+
+/* Apply the gradient overlay on top of the image */
+.big-movie-picture::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -30,7 +230,6 @@ body {
 
 .movie-card {
   position: relative;
-  /* overflow: hidden;  */
 }
 
 .movie-card:hover img {
@@ -49,10 +248,32 @@ body {
   bottom: 0;
   right: 0;
 } */
+#home-vdo {
+  width: 60%;
+}
 
 .home-cat {
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.home-cat-btn > ul > li > a {
+  background-color: transparent;
+  color: white;
+}
+
+.fixed-home-cat {
+  position: fixed;
+  top: 60px;
+  width: 100%;
+  z-index: 1;
+  background-color: black;
+}
+
+.fixed-nav-transition {
+  margin-top: 6.3rem;
 }
 
 .category {
@@ -66,6 +287,7 @@ body {
   justify-content: center;
   margin-bottom: 20px;
   color: white;
+  margin-top: 13rem;
 }
 
 /* about */
@@ -129,4 +351,166 @@ body {
   line-height: 50px;
   text-align: center;
   font-size: 30px;
+}
+
+/* fav-watch buttons */
+.movie-img {
+  position: relative;
+}
+
+.fav-watch-btn-container {
+  position: absolute;
+  top: 90%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+}
+
+.fav-watch-button {
+  border: none;
+  background-color: white;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+/* spinner */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #logo {
+    width: 90px;
+    height: auto;
+  }
+  .main-nav {
+    padding-bottom: 30px;
+  }
+
+  .main-nav.scrolled {
+    padding: 0;
+  }
+  .fixed-home-cat {
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    z-index: 1;
+    background-color: black;
+  }
+
+  #nav-list li {
+    font-size: 1rem;
+  }
+
+  .home-cat {
+    margin-top: 15px;
+  }
+
+  .home-cat-btn > ul > li > a {
+    font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main-nav {
+    padding: 0;
+  }
+
+  .fixed-home-cat {
+    top: 60px;
+  }
+
+  .fixed-nav-transition {
+    margin-top: 7rem;
+  }
+
+  .nav-link {
+    font-size: 18px;
+  }
+  .movie-details {
+    z-index: 100;
+    position: absolute;
+    background-color: white;
+  }
+
+  .movie-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    width: 90%;
+  }
+
+  .big-movie-picture {
+    width: 70%; /* Make the banner stretch across the entire width */
+    max-height: 400px; /* Let the height adjust proportionally based on the image */
+    overflow: hidden; /* Hide any overflow content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .big-movie-picture img {
+    width: 100%; /* Ensure the image stretches to fill the container */
+    height: auto; /* Allow the height to adjust proportionally */
+    display: block; /* Ensure the image doesn't leave any white spaces */
+  }
+
+  .banner-desc {
+    color: white;
+    max-width: 35%;
+    margin-top: 70px;
+    margin-right: 100px;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+  }
+
+  .big-movie-picture {
+    position: relative;
+    overflow: hidden; /* Ensure the gradient doesn't overflow */
+  }
+
+  .big-movie-picture img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .banner-button {
+    padding: 20px 0px;
+  }
+
+  .banner-play-button {
+    padding: 5px 15px;
+  }
+
+  .banner-info-button {
+    padding: 5px 15px;
+    border-radius: 10px;
+    margin-left: 20px;
+  }
+
+  /* Apply the gradient overlay on top of the image */
+  .big-movie-picture::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
 }
