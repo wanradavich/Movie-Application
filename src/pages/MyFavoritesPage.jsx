@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { removeFromFavorites } from "../actions/favoritesActions";
+import MovieCard2 from "../components/MovieCard2";
 
 const FavoritesPage = ({ favorites, removeFromFavorites }) => {
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
@@ -11,26 +12,18 @@ const FavoritesPage = ({ favorites, removeFromFavorites }) => {
 
   return (
     <div>
-      <h2>My Favorites</h2>
-      <div className="movie-list">
+      <div className="fav-movie-list">
         {favorites.length > 0 ? (
           favorites.map((movie) => (
-            <div className="movie-card" key={movie.id}>
-              <img
-                className="movie-img"
-                src={`${baseImageUrl}${movie.poster_path}`}
-                alt={movie.title}
-              />
-              <div>
-                <p>{movie.title}</p>
-                <button onClick={() => handleRemoveFromFavorites(movie.id)}>
-                  Remove from Favorites
-                </button>
-              </div>
-            </div>
+            <MovieCard2
+              key={movie.id}
+              movie={movie}
+              baseImageUrl={baseImageUrl}
+              handleRemoveFromFavorites={handleRemoveFromFavorites}
+            />
           ))
         ) : (
-          <p>No favorite movies</p>
+          <p className="empty-list">Your Movie List is Empty</p>
         )}
       </div>
     </div>

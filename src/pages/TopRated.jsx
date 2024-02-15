@@ -4,6 +4,7 @@ import { addToFavorites } from "../actions/favoritesActions";
 import { addToWatchlist } from "../actions/watchlistActions";
 import { connect } from "react-redux";
 import BigMovieBanner from "../components/BigMovieBanner";
+import MovieCard from "../components/MovieCard";
 
 const TopRated = ({ addToFavorites, addToWatchlist }) => {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
@@ -74,21 +75,13 @@ const TopRated = ({ addToFavorites, addToWatchlist }) => {
           <p>Loading...</p>
         ) : (
           limitedTopRated.map((movie) => (
-            <div className="movie-card" key={movie.id}>
-              <img
-                className="movie-img"
-                src={`${baseImageUrl}${movie.poster_path}`}
-                alt={movie.title}
-              />
-              <div>
-                <button onClick={() => handleAddToFavorites(movie)}>
-                  Add to Favorites
-                </button>
-                <button onClick={() => handleAddToWatchlist(movie)}>
-                  Add to Watchlist
-                </button>
-              </div>
-            </div>
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              baseImageUrl={baseImageUrl}
+              handleAddToFavorites={handleAddToFavorites}
+              handleAddToWatchlist={handleAddToWatchlist}
+            />
           ))
         )}
       </div>
