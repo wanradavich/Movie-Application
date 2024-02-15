@@ -108,6 +108,18 @@ ul {
   margin-top: 1rem;
 }
 
+.fav-movie-list,
+.wl-movie-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 6rem;
+}
+
 .big-movie-picture {
   width: 100%; /* Make the banner stretch across the entire width */
   max-height: 400px; /* Let the height adjust proportionally based on the image */
@@ -230,24 +242,54 @@ ul {
 
 .movie-card {
   position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+/* scale the SVG icons when their parent movie card is being hovered */
+.movie-card:hover .fav-watch-btn-container button svg {
+  transform: scale(1.2);
+}
+
+.movie-card:hover .removeIcon {
+  transform: scale(1.2);
+}
+
+/* CSS transition property to the SVG elements for smoother hover transition */
+.fav-watch-btn-container button svg {
+  transition: transform 0.3s ease;
 }
 
 .movie-card:hover img {
   transform: scale(1.1);
 }
 
-/* fave and watch list button  */
-/* .movie-card:hover .overlay {
-  opacity: 1;
-} */
-
-/* .movie-card .overlay {
+.fav-watch-btn-container {
   position: absolute;
-  transition: 0.5s ease;
-  opacity: 0;
-  bottom: 0;
-  right: 0;
-} */
+  top: 90%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+}
+
+.removeIcon {
+  border: none;
+  border-radius: 10px;
+  position: absolute;
+  top: 90%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  padding: 6px;
+  transition: transform 0.4s ease;
+}
+
+.removeIcon:hover {
+  stroke: white;
+  background-color: rgb(222, 39, 39);
+}
+
 #home-vdo {
   width: 60%;
 }
@@ -262,6 +304,7 @@ ul {
 .home-cat-btn > ul > li > a {
   background-color: transparent;
   color: white;
+  font-size: 16px;
 }
 
 .fixed-home-cat {
@@ -296,7 +339,7 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 110px;
 }
 
 #about-title {
@@ -304,7 +347,7 @@ ul {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 80px;
-  font-size: 50px;
+  font-size: 40px;
 }
 
 /* font-size:11px */
@@ -327,20 +370,23 @@ ul {
 /* tablet and desktop media size: 300px w/h */
 #about-logo {
   border-radius: 50%;
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   margin-bottom: 100px;
 }
 
 /* font-size: 12px; */
 #footer {
-  color: rgb(188, 227, 238);
-  padding: 20px;
+  color: lightgrey;
+  padding: 30px 0px 20px 0px;
   text-align: center;
   font-size: 18px;
   position: relative;
   bottom: 0;
   width: 100%;
+  margin-top: 90px;
+  font-size: 12px;
+  border-top: solid 0.5px lightgrey;
 }
 
 .about-desc {
@@ -350,7 +396,7 @@ ul {
   color: whitesmoke;
   line-height: 50px;
   text-align: center;
-  font-size: 30px;
+  font-size: 28px;
 }
 
 /* fav-watch buttons */
@@ -362,7 +408,7 @@ ul {
   position: absolute;
   top: 90%;
   left: 85%;
-  transform: translate(-50%, -50%);
+  transform: translate(-65%, -50%);
   display: flex;
   flex-direction: row;
 }
@@ -372,6 +418,32 @@ ul {
   background-color: white;
   margin: 5px;
   border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.fav-watch-button:hover {
+  background-color: rgb(222, 39, 39);
+}
+
+.fav-watch-button > svg:hover {
+  stroke: white;
+}
+
+.watchIcon.clicked .heartIcon.clicked {
+  background-color: rgb(222, 39, 39);
+}
+
+.fav-movie-list {
+  min-height: 800px;
+}
+
+.empty-list {
+  color: white;
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* spinner */
@@ -413,33 +485,19 @@ ul {
     margin-top: 15px;
   }
 
-  .home-cat-btn > ul > li > a {
-    font-size: 13px;
+  .fav-movie-list,
+  .wl-movie-list {
+    margin-top: 9rem;
+    min-height: 550px;
+  }
+
+  .removeIcon {
+    top: 37%;
+    left: 85%;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .main-nav {
-    padding: 0;
-  }
-
-  .fixed-home-cat {
-    top: 60px;
-  }
-
-  .fixed-nav-transition {
-    margin-top: 7rem;
-  }
-
-  .nav-link {
-    font-size: 18px;
-  }
-  .movie-details {
-    z-index: 100;
-    position: absolute;
-    background-color: white;
-  }
-
   .movie-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -468,7 +526,7 @@ ul {
     color: white;
     max-width: 35%;
     margin-top: 70px;
-    margin-right: 100px;
+    margin-right: 90px;
     position: absolute;
     z-index: 1;
     right: 0;
@@ -479,38 +537,12 @@ ul {
     overflow: hidden; /* Ensure the gradient doesn't overflow */
   }
 
-  .big-movie-picture img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
   .banner-button {
     padding: 20px 0px;
   }
 
-  .banner-play-button {
-    padding: 5px 15px;
-  }
-
-  .banner-info-button {
-    padding: 5px 15px;
-    border-radius: 10px;
-    margin-left: 20px;
-  }
-
-  /* Apply the gradient overlay on top of the image */
-  .big-movie-picture::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 1) 100%
-    );
+  .removeIcon {
+    top: 52%;
+    left: 87%;
   }
 }

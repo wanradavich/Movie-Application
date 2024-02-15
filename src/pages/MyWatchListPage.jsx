@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { removeFromWatchlist } from "../actions/watchlistActions";
+import MovieCard2 from "../components/MovieCard2";
 
 const WatchlistPage = ({ watchlist, removeFromWatchlist }) => {
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
@@ -10,26 +11,18 @@ const WatchlistPage = ({ watchlist, removeFromWatchlist }) => {
   };
   return (
     <div>
-      <h2>My Favorites</h2>
-      <div className="movie-list">
+      <div className="wl-movie-list">
         {watchlist.length > 0 ? (
           watchlist.map((movie) => (
-            <div className="movie-card" key={movie.id}>
-              <img
-                className="movie-img"
-                src={`${baseImageUrl}${movie.poster_path}`}
-                alt={movie.title}
-              />
-              <div>
-                <p>{movie.title}</p>
-                <button onClick={() => handleRemoveFromWatchlist(movie.id)}>
-                  Remove from Favorites
-                </button>
-              </div>
-            </div>
+            <MovieCard2
+              key={movie.id}
+              movie={movie}
+              baseImageUrl={baseImageUrl}
+              handleRemoveFromFavorites={handleRemoveFromWatchlist}
+            />
           ))
         ) : (
-          <p>No favorite movies</p>
+          <p className="empty-list">Your Movie List is Empty</p>
         )}
       </div>
     </div>
