@@ -276,8 +276,8 @@ ul {
   border: none;
   border-radius: 10px;
   position: absolute;
-  top: 90%;
-  left: 85%;
+  top: 19%;
+  left: 78%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: row;
@@ -492,8 +492,8 @@ ul {
   }
 
   .removeIcon {
-    top: 37%;
-    left: 85%;
+    top: 35%;
+    left: 80%;
   }
 }
 
