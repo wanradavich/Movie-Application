@@ -6,33 +6,19 @@ import Upcoming from "../pages/Upcoming";
 import Navbar from "../components/Navbar";
 import AboutPage from "../pages/AboutPage";
 import Footer from "../components/Footer";
-import MyWatchListPage from "../pages/MyWatchListPage";
 import MyFavoritesPage from "../pages/MyFavoritesPage";
-// import { useEffect, useState } from "react";
-// import Spinner from "../components/spinner";
 
 function AppRouter() {
-  // const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setLoading(false);
-  //   }, 5000); // Set loading to false after 2 seconds
-  //   console.log("loading TRIGGERED");
-  //   return () => clearTimeout(timer);
-  // }, []);
   return (
     <BrowserRouter>
       <div className="wrapper">
         <Navbar />
-        {/* {loading && <Spinner />} Render spinner while loading */}
         <Routes>
           <Route path="/" exact element={<HomePage />} />
           <Route path="/about" exact element={<AboutPage />} />
           <Route path="/toprated" exact element={<TopRated />} />
           <Route path="/nowplaying" exact element={<NowPlaying />} />
           <Route path="/upcoming" exact element={<Upcoming />} />
-          <Route path="/watchlist" exact element={<MyWatchListPage />} />
           <Route path="/favorites" exact element={<MyFavoritesPage />} />
         </Routes>
         <Footer />

@@ -37,11 +37,6 @@ const Navbar = () => {
             My Favorites
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/watchlist" className="nav-link">
-            My Watch List
-          </NavLink>
-        </li>
       </ul>
       <NavLink to={"/"}>
         <img
