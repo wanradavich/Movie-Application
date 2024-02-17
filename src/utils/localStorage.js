@@ -1,9 +1,14 @@
-// export const getFavoritesFromLocalStorage = () => {
-//   const favoritesData = localStorage.getItem("favorites");
-//   return favoritesData ? JSON.parse(favoritesData) : [];
-// };
+const favoritesStorage = "appFavorites";
 
-// export const getWatchlistFromLocalStorage = () => {
-//   const watchlistData = localStorage.getItem("watchlist");
-//   return watchlistData ? JSON.parse(watchlistData) : [];
-// };
+export function getFavorites() {
+  let favoritesFromStorage = localStorage.getItem(favoritesStorage);
+  if (favoritesFromStorage === null) {
+    return [];
+  } else {
+    return JSON.parse(favoritesFromStorage);
+  }
+}
+
+export function saveFavorites(favorites) {
+  localStorage.setItem(favoritesStorage, JSON.stringify(favorites));
+}
