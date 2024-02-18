@@ -11,8 +11,13 @@ export const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addToFavorites: (state, action) => {
-      state.favorites.push(action.payload);
-      saveFavorites(state.favorites);
+      // Check if the movie is already in favorites
+      const isAlreadyAdded = state.favorites.some(movie => movie.id === action.payload.id);
+      if (!isAlreadyAdded) {
+        console.log("Movie is not in list, adding to fave: ", action.payload);
+        state.favorites.push(action.payload);
+        saveFavorites(state.favorites);
+      }
     },
     removeFromFavorites: (state, action) => {
       state.favorites = state.favorites.filter(
