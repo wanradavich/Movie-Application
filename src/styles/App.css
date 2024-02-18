@@ -490,12 +490,17 @@ ul {
 
 @media screen and (min-width: 768px) {
   .banner-desc {
-    margin: 55px 30px 0px 0px;
+    margin: 90px 30px 0px 0px;
+    padding: 10px;
   }
 
   .banner-desc > p {
     display: block;
     max-width: 260px;
+  }
+
+  .banner-desc > h2 {
+    font-size: 25px;
   }
 
   .vote-average-container {
@@ -575,8 +580,9 @@ ul {
   .banner-desc {
     color: white;
     max-width: 35%;
-    margin-top: 50px;
+    margin-top: 80px;
     margin-right: 80px;
+
     position: absolute;
     z-index: 1;
     right: 0;
