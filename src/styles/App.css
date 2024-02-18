@@ -247,7 +247,7 @@ ul {
 
 /* scale the SVG icons when their parent movie card is being hovered */
 .movie-card:hover .fav-watch-btn-container button svg {
-  transform: scale(1.2);
+  transform: scale(1.4);
 }
 
 .movie-card:hover .removeIcon {
@@ -410,8 +410,8 @@ ul {
 
 .fav-watch-btn-container {
   position: absolute;
-  top: 90%;
-  left: 85%;
+  top: 95%;
+  left: 90%;
   transform: translate(-65%, -50%);
   display: flex;
   flex-direction: row;
