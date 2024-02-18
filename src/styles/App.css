@@ -272,6 +272,11 @@ ul {
   flex-direction: row;
 }
 
+.favorite {
+  background-color: red;
+}
+
+
 .removeIcon {
   border: none;
   border-radius: 10px;
