@@ -20,10 +20,13 @@ const MovieCategory = ({ apiUrl }) => {
         const response = await fetch(apiUrl);
         const data = await response.json();
         const fetchedMovies = data.results;
+        const sortedFetchedMovies = fetchedMovies
+          .slice()
+          .sort((a, b) => b.vote_average - a.vote_average);
         setMovies(fetchedMovies);
         setLoading(false);
-        if (fetchedMovies.length > 0) {
-          setFirstMovie(fetchedMovies[0]); // Set the first movie
+        if (sortedFetchedMovies.length > 0) {
+          setFirstMovie(sortedFetchedMovies[0]); // Sets the first movie as highest vote_average
         }
       } catch (error) {
         console.error("Error fetching movies:", error);

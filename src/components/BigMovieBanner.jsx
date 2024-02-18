@@ -1,4 +1,14 @@
 const BigMovieBanner = ({ src, alt, desc }) => {
+  // Function to limit the description to 25 words
+  const limitDescription = (description) => {
+    const words = description.split(" ");
+    if (words.length > 25) {
+      return words.slice(0, 25).join(" ") + "...";
+    }
+    return description;
+  };
+
+  const limitedDesc = limitDescription(desc);
   return (
     <>
       <div id="banner-card">
@@ -7,7 +17,12 @@ const BigMovieBanner = ({ src, alt, desc }) => {
         </div>
         <div className="banner-desc">
           <h2>{alt}</h2>
-          <p>{desc}</p>
+          <div className="vote-average-container">
+            <div className="number-icon">#1</div>
+            <div className="vote-average-title">Vote Avergage</div>
+          </div>
+
+          <p>{limitedDesc}</p>
           <div className="banner-button">
             <button className="banner-play-button">
               <svg
