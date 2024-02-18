@@ -145,7 +145,7 @@ ul {
   color: white;
   max-width: 50%;
   padding: 50px;
-  margin: 80px 0px 100px 100px;
+  margin: 90px 0px 0px 0px;
   position: absolute;
   z-index: 1;
   right: 0;
@@ -153,14 +153,44 @@ ul {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
+.banner-desc > h2 {
+  max-width: 300px;
+}
+
 .banner-desc > p {
   max-height: 80px;
   overflow: hidden;
+  display: none;
+}
+
+.vote-average-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  display: flex;
+  margin: 10px 0;
+  margin-bottom: 30px;
+}
+
+.number-icon {
+  background-color: rgb(222, 39, 39);
+  height: 20px;
+  width: 20px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.vote-average-title {
+  margin-left: 10px;
 }
 
 .big-movie-picture {
   position: relative;
   overflow: hidden; /* Ensure the gradient doesn't overflow */
+  border: 1px solid black;
 }
 
 .big-movie-picture img {
@@ -459,6 +489,25 @@ ul {
 }
 
 @media screen and (min-width: 768px) {
+  .banner-desc {
+    margin: 55px 30px 0px 0px;
+  }
+
+  .banner-desc > p {
+    display: block;
+    max-width: 260px;
+  }
+
+  .vote-average-container {
+    margin: 5px 0px 15px 0px;
+  }
+
+  .vote-average-title {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+
   #logo {
     width: 90px;
     height: auto;
@@ -526,8 +575,8 @@ ul {
   .banner-desc {
     color: white;
     max-width: 35%;
-    margin-top: 70px;
-    margin-right: 90px;
+    margin-top: 50px;
+    margin-right: 80px;
     position: absolute;
     z-index: 1;
     right: 0;
