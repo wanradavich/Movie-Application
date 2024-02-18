@@ -263,6 +263,7 @@ ul {
   transform: scale(1.1);
 }
 
+
 .fav-watch-btn-container {
   position: absolute;
   top: 90%;
@@ -272,9 +273,7 @@ ul {
   flex-direction: row;
 }
 
-.favorite {
-  background-color: red;
-}
+
 
 
 .removeIcon {
@@ -420,19 +419,13 @@ ul {
 
 .fav-watch-button {
   border: none;
-  background-color: white;
-  margin: 5px;
-  border-radius: 10px;
-  transition: all 0.2s ease-in-out;
+  background-color: transparent;
 }
 
-.fav-watch-button:hover {
-  background-color: rgb(222, 39, 39);
+.fav-watch-button:hover svg {
+  fill: red; /* Set the fill color of the SVG to red on hover */
 }
 
-.fav-watch-button > svg:hover {
-  stroke: white;
-}
 
 .watchIcon.clicked .heartIcon.clicked {
   background-color: rgb(222, 39, 39);
