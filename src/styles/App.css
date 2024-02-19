@@ -602,3 +602,9 @@ ul {
     left: 87%;
   }
 }
+.movie-details-container {
+  color: white;
+}
+#movie-detail-title {
+  color: white;
+}
