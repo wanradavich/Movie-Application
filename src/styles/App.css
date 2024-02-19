@@ -477,6 +477,11 @@ ul {
   align-items: center;
 }
 
+.movie-individual {
+  color: white;
+  margin-top: 100px;
+}
+
 /* spinner */
 
 @keyframes spin {
