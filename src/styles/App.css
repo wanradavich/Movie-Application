@@ -19,6 +19,11 @@ ul {
   flex-direction: row;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 .main-nav {
   display: flex;
   justify-content: left;
@@ -84,6 +89,53 @@ ul {
 
 .nav-link:hover {
   transform: scale(1.1);
+}
+
+.avatar-container {
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.avatar-container:hover {
+  transform: scale(1.2);
+}
+
+.hover-div {
+  display: none;
+  position: absolute;
+  width: 175px;
+  top: 100%;
+  left: 15%;
+  transform: translateX(-50%);
+  padding: 15px;
+  background-color: black;
+  border: solid 1px grey;
+  color: white;
+  font-size: 12px;
+}
+
+.avatar-container:hover .hover-div {
+  display: block;
+}
+
+.signout {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  border-top: 1px solid white;
+  padding: 5px 0px 0px 0px;
+}
+
+.manage,
+.account,
+.help {
+  margin-top: 5px;
+}
+
+.manage > svg,
+.account > svg,
+.help > svg {
+  margin-right: 10px;
 }
 
 /* home */
@@ -235,6 +287,7 @@ ul {
   display: flex;
   align-items: center;
   transition: all 0.3s ease-in-out;
+  height: 100%;
 }
 
 .banner-info-button:hover {
@@ -490,7 +543,7 @@ ul {
 
 @media screen and (min-width: 768px) {
   .banner-desc {
-    margin: 90px 30px 0px 0px;
+    margin: 100px 30px 0px 0px;
     padding: 10px;
   }
 
@@ -580,9 +633,7 @@ ul {
   .banner-desc {
     color: white;
     max-width: 35%;
-    margin-top: 80px;
-    margin-right: 80px;
-
+    margin-right: 90px;
     position: absolute;
     z-index: 1;
     right: 0;
@@ -607,4 +658,15 @@ ul {
 }
 #movie-detail-title {
   color: white;
+}
+
+@media screen and (min-width: 1440px) {
+  .banner-desc {
+    margin-right: 150px;
+    max-width: 100%;
+  }
+
+  .big-movie-picture {
+    border: black;
+  }
 }

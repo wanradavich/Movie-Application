@@ -44,24 +44,25 @@ const MovieDetails = () => {
       <div className="movie-details-container">
         <h3>{movie.title}</h3>
         <div id="overview">
-            <h5>Overview</h5>
-            <p>{movie.overview}</p>
+          <h5>Overview</h5>
+          <p>{movie.overview}</p>
         </div>
         <div id="released">
-            <h5>Released</h5>
-            <p>{movie.release_date}</p>
+          <h5>Released</h5>
+          <p>{movie.release_date}</p>
         </div>
-        <div id="rating">
-            <h5>Rating</h5>
-            <p>{movie.vote_average.toFixed(1)}/10</p>
-        </div>
+        {/* <div id="rating">
+          <h5>Rating</h5>
+          <p>{movie.vote_average.toFixed(1)}/10</p>
+        </div> */}
         <div id="genre">
-            <h5>Genre</h5>
-            <p>
-                {movie.genres && movie.genres.map((genre) => (
-                    <span key={genre.id}>{genre.name}, </span>
-                ))}
-            </p>
+          <h5>Genre</h5>
+          <p>
+            {movie.genres &&
+              movie.genres.map((genre) => (
+                <span key={genre.id}>{genre.name}, </span>
+              ))}
+          </p>
         </div>
       </div>
       <Link to={`/`}>
@@ -160,7 +161,7 @@ export default MovieDetails;
 //             </div>
 //         </div>
 //     )
-// } 
+// }
 // // MovieDetail.defaultProps = {
 // //     movieLink: true,
 // //   };

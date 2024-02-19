@@ -62,6 +62,7 @@ const MovieCategory = ({ apiUrl }) => {
           src={`https://image.tmdb.org/t/p/w500${firstMovie.poster_path}`}
           alt={firstMovie.title}
           desc={firstMovie.overview}
+          movieId={firstMovie.id}
         />
       )}
       <div className={`home-cat ${isSticky ? "fixed-home-cat" : ""}`}>
