@@ -35,8 +35,7 @@ const MovieDetails = () => {
 
   return (
     <div className="movie-individual">
-        
-      <h2>Movie Details</h2>
+      <h2 id="movie-detail-title">Movie Details</h2>
       <img
         src={`${baseImageUrl}${movie.poster_path}`}
         alt={movie.title}
@@ -54,15 +53,15 @@ const MovieDetails = () => {
         </div>
         <div id="rating">
             <h5>Rating</h5>
-            <p>{movie.vote_average}/10</p>
+            <p>{movie.vote_average.toFixed(1)}/10</p>
         </div>
         <div id="genre">
             <h5>Genre</h5>
-            {/* <p>
-                {movie.genres.map((genre) => (
-                    <span key={genre.id}>{genre.name}</span>
+            <p>
+                {movie.genres && movie.genres.map((genre) => (
+                    <span key={genre.id}>{genre.name}, </span>
                 ))}
-            </p> */}
+            </p>
         </div>
       </div>
       <Link to={`/`}>
