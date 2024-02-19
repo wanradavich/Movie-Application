@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import AboutPage from "../pages/AboutPage";
 import Footer from "../components/Footer";
 import MyFavoritesPage from "../pages/MyFavoritesPage";
+import IndividualMoviePage from "../pages/IndividualMoviePage";
 
 function AppRouter() {
   return (
@@ -20,6 +21,7 @@ function AppRouter() {
           <Route path="/nowplaying" exact element={<NowPlaying />} />
           <Route path="/upcoming" exact element={<Upcoming />} />
           <Route path="/favorites" exact element={<MyFavoritesPage />} />
+          <Route path="movie-profile/:id" element={<IndividualMoviePage />} />
         </Routes>
         <Footer />
       </div>

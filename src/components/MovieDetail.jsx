@@ -2,7 +2,7 @@
 import { addToFavorites, removeFromFavorites } from "../slices/favoritesSlice";
 import { useDispatch } from "react-redux";
 
-function MovieDetail ({movieObj, movieLink, isFavourite, baseImageUrl}) {
+function MovieDetail ({movieObj, isFavourite, baseImageUrl}) {
     const dispatch = useDispatch();
 
     function handleToggleFavorite() {
@@ -19,6 +19,9 @@ function MovieDetail ({movieObj, movieLink, isFavourite, baseImageUrl}) {
         <div>
             {isFavourite && (
                 <div>
+                    <button onClick={handleToggleFavorite}>
+                        heart
+                    </button>
                     {/* this is where the heart would go for favourite */}
                 </div>
             )}
@@ -70,4 +73,7 @@ function MovieDetail ({movieObj, movieLink, isFavourite, baseImageUrl}) {
         </div>
     )
 } 
+// MovieDetail.defaultProps = {
+//     movieLink: true,
+//   };
 export default MovieDetail;
