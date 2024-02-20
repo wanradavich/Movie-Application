@@ -13,8 +13,8 @@ const FavoritesPage = () => {
   };
 
   return (
-    <div>
-      <div className="fav-movie-list">
+    <div id="favorites">
+      <div className={favorites.length > 0 ? "fav-movie-list" : "empty-page"}>
         {favorites.length > 0 ? (
           favorites.map((movie) => (
             <MovieCard2
@@ -25,7 +25,14 @@ const FavoritesPage = () => {
             />
           ))
         ) : (
-          <p className="empty-list">Your Movie List is Empty</p>
+          <div id="empty-list-container">
+            <p className="empty-list">Your Movie List is Empty</p>
+            <img
+              id="empty-list-img"
+              src="../../public/images/no-movies.jpg"
+              alt="empty-list"
+            />
+          </div>
         )}
       </div>
     </div>

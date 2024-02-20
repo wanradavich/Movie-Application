@@ -16,6 +16,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <nav className={`main-nav ${isScrolled ? "scrolled" : ""}`}>
       <NavLink to={"/"}>
