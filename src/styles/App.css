@@ -87,7 +87,9 @@ a {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:active,
+.nav-link.active {
   transform: scale(1.1);
 }
 
@@ -336,8 +338,6 @@ a {
   transition: all 0.2s ease-in-out;
 }
 
-
-
 .fav-watch-btn-container {
   position: absolute;
   top: 90%;
@@ -481,7 +481,7 @@ a {
 
 .fav-watch-btn-container {
   position: absolute;
-  top: 95%;
+  top: 92%;
   left: 90%;
   transform: translate(-65%, -50%);
   display: flex;
@@ -512,6 +512,26 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10rem;
+}
+
+#empty-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+#empty-list-img {
+  width: 350px;
+  height: auto;
+  border-radius: 50%;
+  margin-top: 40px;
+}
+
+#favorites {
+  min-height: 800px;
 }
 
 /* spinner */
@@ -584,30 +604,29 @@ a {
   }
 
   .removeIcon {
-    top: 35%;
-    left: 80%;
+    top: 37%;
+    left: 85%;
   }
 }
 
 @media screen and (min-width: 1024px) {
-
   /* scale the SVG icons when their parent movie card is being hovered */
-.movie-card:hover .fav-watch-btn-container button svg {
-  transform: scale(1.4);
-}
+  .movie-card:hover .fav-watch-btn-container button svg {
+    transform: scale(1.4);
+  }
 
-.movie-card:hover .removeIcon {
-  transform: scale(1.2);
-}
+  .movie-card:hover .removeIcon {
+    transform: scale(1.2);
+  }
 
-/* CSS transition property to the SVG elements for smoother hover transition */
-.fav-watch-btn-container button svg {
-  transition: transform 0.3s ease;
-}
+  /* CSS transition property to the SVG elements for smoother hover transition */
+  .fav-watch-btn-container button svg {
+    transition: transform 0.3s ease;
+  }
 
-.movie-card:hover img {
-  transform: scale(1.1);
-}
+  .movie-card:hover img {
+    transform: scale(1.1);
+  }
 
   .movie-list {
     display: grid;
@@ -652,7 +671,7 @@ a {
   }
 
   .removeIcon {
-    top: 52%;
+    top: 55%;
     left: 87%;
   }
 }
