@@ -336,23 +336,7 @@ a {
   transition: all 0.2s ease-in-out;
 }
 
-/* scale the SVG icons when their parent movie card is being hovered */
-.movie-card:hover .fav-watch-btn-container button svg {
-  transform: scale(1.4);
-}
 
-.movie-card:hover .removeIcon {
-  transform: scale(1.2);
-}
-
-/* CSS transition property to the SVG elements for smoother hover transition */
-.fav-watch-btn-container button svg {
-  transition: transform 0.3s ease;
-}
-
-.movie-card:hover img {
-  transform: scale(1.1);
-}
 
 .fav-watch-btn-container {
   position: absolute;
@@ -606,6 +590,25 @@ a {
 }
 
 @media screen and (min-width: 1024px) {
+
+  /* scale the SVG icons when their parent movie card is being hovered */
+.movie-card:hover .fav-watch-btn-container button svg {
+  transform: scale(1.4);
+}
+
+.movie-card:hover .removeIcon {
+  transform: scale(1.2);
+}
+
+/* CSS transition property to the SVG elements for smoother hover transition */
+.fav-watch-btn-container button svg {
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover img {
+  transform: scale(1.1);
+}
+
   .movie-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
