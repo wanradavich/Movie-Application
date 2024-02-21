@@ -12,8 +12,11 @@ const MovieCategory = ({ apiUrl }) => {
   const [loading, setLoading] = useState(true);
   const [firstMovie, setFirstMovie] = useState(null);
   const [isSticky, setIsSticky] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
+  const baseUrl = "https://api.themoviedb.org/3";
+  const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,6 +57,32 @@ const MovieCategory = ({ apiUrl }) => {
     };
   }, []);
 
+  const searchMovies = async (query) => {
+    const encodedQuery = encodeURIComponent(query);
+    const API_URL = `${baseUrl}/search/movie?api_key=${apiKey}&language=en-US&query=${encodedQuery}`;
+    try {
+      const response = await fetch(API_URL);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setMovies(data.results);
+    } catch (error) {
+      console.error("Error searching movies by title:", error);
+      setMovies([]);
+    }
+  };
+
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+    searchMovies(event.target.value); // Trigger search as the user types
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    searchMovies(searchQuery);
+  };
+
   const handleAddToFavorites = (movie) => {
     // Dispatch addToFavorites action using useDispatch
     dispatch(addToFavorites(movie));
@@ -77,6 +106,27 @@ const MovieCategory = ({ apiUrl }) => {
           )}
           <div className={`home-cat ${isSticky ? "fixed-home-cat" : ""}`}>
             <HomeCategories />
+            <form onSubmit={handleSearchSubmit}>
+              <input
+                id="search-input"
+                type="text"
+                value={searchQuery}
+                onChange={handleSearchInputChange}
+                placeholder="Search..."
+              />
+              <button id="search" type="submit">
+                <svg
+                  id="search-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+              </button>
+            </form>
           </div>
           <div
             className={`movie-list ${isSticky ? "fixed-nav-transition" : ""}`}

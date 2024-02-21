@@ -369,11 +369,32 @@ a {
   width: 60%;
 }
 
+#search {
+  border: none;
+  background-color: transparent;
+}
+
+#search-icon {
+  color: grey;
+  margin-right: 20px;
+}
+
+#search-input {
+  background-color: transparent;
+  border-radius: 50px;
+  border: none;
+  font-size: 18px;
+  color: white;
+  padding: 0px 20px;
+  margin-bottom: 30px;
+}
+
 .home-cat {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  flex-direction: column;
 }
 
 .home-cat-btn > ul > li > a {
@@ -625,6 +646,12 @@ a {
 }
 
 @media screen and (min-width: 1024px) {
+  #search-input {
+    margin: 0;
+  }
+  .home-cat {
+    flex-direction: row;
+  }
   /* scale the SVG icons when their parent movie card is being hovered */
   .movie-card:hover .fav-watch-btn-container button svg {
     transform: scale(1.4);
