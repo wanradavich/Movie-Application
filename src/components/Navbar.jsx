@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import "../styles/App.css";
 import { useState, useEffect } from "react";
-
+import Logo from "./images/logo-movieapp.jpg";
+import Avatar from "./images/movie-avatar.jpg";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -20,7 +21,7 @@ const Navbar = () => {
   return (
     <nav className={`main-nav ${isScrolled ? "scrolled" : ""}`}>
       <NavLink to={"/"}>
-        <img id="logo" src="../../public/images/logo-movieapp.jpg" alt="logo" />
+        <img id="logo" src={ Logo } alt="logo" />
       </NavLink>
       <ul id="nav-list">
         <li>
@@ -43,7 +44,7 @@ const Navbar = () => {
         <NavLink to={"/"}>
           <img
             id="avatar"
-            src="../../public/images/movie-avatar.jpg"
+            src={ Avatar }
             alt="logo"
           />
         </NavLink>
