@@ -19,30 +19,8 @@ const MovieCategory = ({ apiUrl }) => {
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        const fetchedMovies = data.results;
-        const sortedFetchedMovies = fetchedMovies
-          .slice()
-          .sort((a, b) => b.vote_average - a.vote_average);
-        setMovies(fetchedMovies);
-        setLoading(true);
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-        if (sortedFetchedMovies.length > 0) {
-          setFirstMovie(sortedFetchedMovies[0]); // Sets the first movie as highest vote_average
-        }
-      } catch (error) {
-        console.error("Error fetching movies:", error);
-        setLoading(false);
-      }
-    };
-
     fetchData();
-  }, [apiUrl]);
+  }, []);
 
   //for home category nav transition
   useEffect(() => {
@@ -57,7 +35,33 @@ const MovieCategory = ({ apiUrl }) => {
     };
   }, []);
 
+  const fetchData = async () => {
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      const fetchedMovies = data.results;
+      const sortedFetchedMovies = fetchedMovies
+        .slice()
+        .sort((a, b) => b.vote_average - a.vote_average);
+      setMovies(fetchedMovies);
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+      if (sortedFetchedMovies.length > 0) {
+        setFirstMovie(sortedFetchedMovies[0]); // Sets the first movie as highest vote_average
+      }
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+      setLoading(false);
+    }
+  };
   const searchMovies = async (query) => {
+    if (!query) {
+      // If the search query is empty, fetch all movies
+      fetchData();
+      return;
+    }
     const encodedQuery = encodeURIComponent(query);
     const API_URL = `${baseUrl}/search/movie?api_key=${apiKey}&language=en-US&query=${encodedQuery}`;
     try {
