@@ -83,30 +83,31 @@ const MovieDetails = () => {
               {/* <h5>Overview</h5> */}
               <p>{movie.overview}</p>
           </div>
-          <div id="released">
-              <h5 className="detail-headings">RELEASED</h5>
-              <p className="detail-content">{movie.release_date}</p>
+          <div id="movie-tags-container">
+            <div id="released">
+                <h5 className="detail-headings">RELEASED</h5>
+                <p className="detail-content">{movie.release_date}</p>
+            </div>
+            <div id="rating">
+                <h5 className="detail-headings">RATING</h5>
+                {movie.vote_average !== undefined ? (
+                    <p className="detail-content">{movie.vote_average.toFixed(1)}/10</p>
+                ) : (
+                    <p>N/A</p>
+                )}
+            </div>
+            <div id="genre">
+              <h5 className="detail-headings">GENRE</h5>
+              <p className="detail-content">
+                  {movie.genres && movie.genres.map((genre, index) => (
+                      <span key={genre.id}>
+                          {genre.name}
+                          {index !== movie.genres.length - 1 && ", "}
+                      </span>
+                  ))}
+              </p>
+            </div>
           </div>
-          <div id="rating">
-              <h5 className="detail-headings">RATING</h5>
-              {movie.vote_average !== undefined ? (
-                  <p className="detail-content">{movie.vote_average.toFixed(1)}/10</p>
-              ) : (
-                  <p>N/A</p>
-              )}
-          </div>
-          <div id="genre">
-            <h5 className="detail-headings">GENRE</h5>
-            <p className="detail-content">
-                {movie.genres && movie.genres.map((genre, index) => (
-                    <span key={genre.id}>
-                        {genre.name}
-                        {index !== movie.genres.length - 1 && ", "}
-                    </span>
-                ))}
-            </p>
-          </div>
-          
         </div>
       </div>
       {video && (
