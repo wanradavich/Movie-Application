@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromFavorites } from "../slices/favoritesSlice";
 import MovieCard2 from "../components/MovieCard2";
+import NoMovie from "../components/images/no-movies.jpg";
 
 const FavoritesPage = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const FavoritesPage = () => {
             <p className="empty-list">Your Movie List is Empty</p>
             <img
               id="empty-list-img"
-              src="../../public/images/no-movies.jpg"
+              src={ NoMovie}
               alt="empty-list"
             />
           </div>
