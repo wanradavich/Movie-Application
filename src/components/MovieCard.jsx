@@ -22,7 +22,7 @@ const MovieCard = ({ movie, baseImageUrl }) => {
       className={`movie-card ${isFavorite ? "favorite" : ""}`}
       key={movie.id}
     >
-      <Link to={{pathname: `/movie/${movie.id}`, state: { movie } }}>
+      <Link to={`/movie/${movie.id}`} state={{ movie: movie }}>
         <div className="movie-img-container">
           <img
             className="movie-img"
