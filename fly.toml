@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for movieapplication on 2024-02-21T12:46:51-08:00
+# fly.toml app configuration file generated for eunice-movie-app on 2024-02-21T12:46:35-08:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'movieapplication'
+app = 'eunice-movie-app'
 primary_region = 'sea'
 
 [build]
