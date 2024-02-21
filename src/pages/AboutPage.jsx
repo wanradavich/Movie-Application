@@ -1,10 +1,13 @@
+import TMBDLogo from "../components/images/tmdb-logo.svg";
+import CineSyncLogo from "../components/images/logo-movieapp.jpg";
+
 function AboutPage() {
   return (
     <div id="about-main">
       <h2 id="about-title">About Us</h2>
       <img
         id="about-logo"
-        src="../../public/images/logo-movieapp.jpg"
+        src={ CineSyncLogo }
         alt="cinesync-logo"
       />
       <p className="about-desc">
@@ -19,7 +22,7 @@ function AboutPage() {
         <p>
           <img
             id="tmdb-logo"
-            src="../../public/images/tmdb-logo.svg"
+            src={ TMBDLogo }
             alt="TMDB-logo"
           />
           This product uses the TMDb API but is not endorsed or certified by

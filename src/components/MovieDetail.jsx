@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorites, removeFromFavorites } from "../slices/favoritesSlice";
-
+import Camera from "./images/camera.jpg";
 const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
@@ -49,17 +49,15 @@ const MovieDetails = () => {
 
   return (
     <div className="movie-individual">
-      {/* <h2 id="movie-detail-title">Movie Details</h2> */}
       <div id="movie-details">
         <div id="poster-container">
           <img
             src={
               movie.poster_path
                 ? `${baseImageUrl}${movie.poster_path}`
-                : "../../public/images/camera.jpg"
+                : { Camera }
             }
             alt={movie.title}
-            // style={{ width: "200px", height: "300px" }}
             id="poster-img"
           />
           <div id="detail-heart-container">
@@ -83,7 +81,6 @@ const MovieDetails = () => {
         <div className="movie-details-container">
           <h3 id="movie-title">{movie.title}</h3>
           <div id="overview">
-            {/* <h5>Overview</h5> */}
             <p>{movie.overview}</p>
           </div>
           <div id="movie-tags-container">
@@ -119,8 +116,6 @@ const MovieDetails = () => {
       {video && (
         <div id="trailor-container">
           <iframe
-            // width="560"
-            // height="315"
             src={`https://www.youtube.com/embed/${video.key}?rel=0`}
             id="trailor"
           ></iframe>

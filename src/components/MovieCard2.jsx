@@ -1,9 +1,15 @@
+import Camera from "./images/camera.jpg";
 const MovieCard2 = ({ movie, baseImageUrl, handleRemoveFromFavorites }) => {
   return (
     <div className="movie-card" key={movie.id}>
       <img
         className="movie-img"
-        src={`${baseImageUrl}${movie.poster_path}`}
+        // src={`${baseImageUrl}${movie.poster_path}`}
+        src={
+          movie.poster_path
+            ? `${baseImageUrl}${movie.poster_path}`
+            : { Camera }
+        }
         alt={movie.title}
       />
       <div>
