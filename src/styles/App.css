@@ -409,7 +409,7 @@ a {
 .category {
   border-radius: 40px;
   margin-right: 20px;
-  margin: 30px;
+  margin: 30px 15px;
 }
 
 .header-title {
@@ -696,7 +696,9 @@ a {
   .home-cat {
     margin-top: 15px;
   }
-
+  .category {
+    margin: 30px;
+  }
   .fav-movie-list,
   .wl-movie-list {
     margin-top: 9rem;
@@ -861,4 +863,7 @@ a {
   .big-movie-picture {
     border: black;
   }
+}
+.wrapper {
+  width: 100vw;
 }
