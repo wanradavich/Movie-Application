@@ -4,12 +4,16 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorites, removeFromFavorites } from "../slices/favoritesSlice";
 import Camera from "./images/camera.jpg";
+import { useLocation } from "react-router-dom";
+
 const MovieDetails = () => {
-  const { id } = useParams();
-  const [movie, setMovie] = useState({});
-  const [video, setVideo] = useState(null);
+   const { id } = useParams();
+  //const [movie, setMovie] = useState({});
+   const [video, setVideo] = useState(null);
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
+  const location = useLocation();
+  const { movie } = location.state;
 
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.favorites);
@@ -22,15 +26,15 @@ const MovieDetails = () => {
       dispatch(addToFavorites(movie));
     }
   };
-
+  
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const movieResponse = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`
-        );
-        const movieData = await movieResponse.json();
-        setMovie(movieData);
+        // const movieResponse = await fetch(
+        //   `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`
+        // );
+        // const movieData = await movieResponse.json();
+        // setMovie(movieData);
 
         const videoResponse = await fetch(
           `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=en-US`
