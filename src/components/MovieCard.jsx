@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorites, removeFromFavorites } from "../slices/favoritesSlice";
 import { Link } from "react-router-dom";
+import Camera from "./images/camera.jpg";
 
 const MovieCard = ({ movie, baseImageUrl }) => {
   const dispatch = useDispatch();
@@ -25,7 +26,12 @@ const MovieCard = ({ movie, baseImageUrl }) => {
         <div className="movie-img-container">
           <img
             className="movie-img"
-            src={`${baseImageUrl}${movie.poster_path}`}
+            // src={`${baseImageUrl}${movie.poster_path}`}
+            src={
+              movie.poster_path
+                ? `${baseImageUrl}${movie.poster_path}`
+                : { Camera }
+            }
             alt={movie.title}
           />
           <div className="fav-watch-btn-container">
