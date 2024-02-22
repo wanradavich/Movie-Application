@@ -8,16 +8,19 @@ import { useLocation } from "react-router-dom";
 
 const MovieDetails = () => {
    const { id } = useParams();
+   console.log(id);
   //const [movie, setMovie] = useState({});
    const [video, setVideo] = useState(null);
   const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
   const location = useLocation();
-  const { movie } = location.state;
+  const  movie  = location.state;
+  console.log(movie);
 
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.favorites);
   const isFavorite = favorites.some((favorite) => favorite.id === movie.id);
+  console.log(isFavorite);
 
   const handleToggleFavorite = () => {
     if (isFavorite) {
