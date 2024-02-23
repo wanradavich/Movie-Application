@@ -51,7 +51,7 @@ const MovieCard = ({ movie, baseImageUrl }) => {
             </button>
           </div>
           <div id="movie-card-title">
-            {movie.title}
+            <p id="movie-card-title-p-tag">{movie.title}</p>
           </div>
         </div>
       </Link>
