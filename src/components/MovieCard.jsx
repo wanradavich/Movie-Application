@@ -50,6 +50,9 @@ const MovieCard = ({ movie, baseImageUrl }) => {
               </svg>
             </button>
           </div>
+          <div id="movie-card-title">
+            {movie.title}
+          </div>
         </div>
       </Link>
     </div>
