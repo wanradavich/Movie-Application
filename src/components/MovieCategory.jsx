@@ -102,7 +102,7 @@ const MovieCategory = ({ apiUrl }) => {
         <>
           {firstMovie && (
             <BigMovieBanner
-              src={`https://image.tmdb.org/t/p/w500${firstMovie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/original${firstMovie.poster_path}`}
               alt={firstMovie.title}
               desc={firstMovie.overview}
               movieId={firstMovie.id}
