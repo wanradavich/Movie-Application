@@ -18,7 +18,9 @@ const MovieDetails = () => {
 
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.favorites);
-  const isFavorite = favorites.some((favorite) => favorite.id === (movie?.id || id));
+  const isFavorite = favorites.some(
+    (favorite) => favorite.id === (movie?.id || id)
+  );
 
   const handleToggleFavorite = () => {
     if (isFavorite) {
@@ -71,7 +73,10 @@ const MovieDetails = () => {
               id="poster-img"
             />
             <div id="detail-heart-container">
-              <button className="fav-watch-button" onClick={handleToggleFavorite}>
+              <button
+                className="fav-watch-button"
+                onClick={handleToggleFavorite}
+              >
                 <svg
                   className="heartIcon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +113,7 @@ const MovieDetails = () => {
                   )}
                 </p>
               </div>
-              <div id="genre">
+              {/* <div id="genre">
                 <h5 className="detail-headings">GENRE</h5>
                 <p className="detail-content">
                   {movie.genres &&
@@ -119,7 +124,7 @@ const MovieDetails = () => {
                       </span>
                     ))}
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

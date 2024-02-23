@@ -636,6 +636,10 @@ a {
   height: 325px;
 }
 
+#released {
+  margin-right: 40px;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -763,7 +767,7 @@ a {
   }
   #movie-tags-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
   }
   #poster-img {
     margin-left: 0;
@@ -932,8 +936,8 @@ a {
   .movie-card:hover .fav-watch-btn-container {
     top: 94%;
   }
- }
- @media (min-width: 1440px) {
+}
+@media (min-width: 1440px) {
   .movie-card:hover #movie-card-title {
     bottom: -25px;
     font-size: 1.7rem;
@@ -943,8 +947,8 @@ a {
     padding-left: 20px;
     line-height: 24px;
   }
- }
- @media (min-width: 1620px) {
+}
+@media (min-width: 1620px) {
   .movie-card:hover #movie-card-title {
     bottom: -30px;
     font-size: 1.7rem;
@@ -957,5 +961,4 @@ a {
   .movie-card:hover .fav-watch-btn-container {
     top: 97%;
   }
- }
-
+}
