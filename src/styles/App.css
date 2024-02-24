@@ -740,7 +740,7 @@ a {
   }
 
   .removeIcon {
-    top: 90%;
+    top: 52%;
     left: 85%;
   }
 
@@ -935,7 +935,7 @@ a {
 
 @media screen and (min-width: 1440px) {
   .removeIcon {
-    top: 93%;
+    top: 76%;
     left: 89%;
   }
 
@@ -993,5 +993,9 @@ a {
 
   #detail-heart-container {
     bottom: -545px;
+  }
+
+  .removeIcon {
+    top: 86%;
   }
 }
