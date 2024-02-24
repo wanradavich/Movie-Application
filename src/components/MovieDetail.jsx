@@ -113,18 +113,6 @@ const MovieDetails = () => {
                   )}
                 </p>
               </div>
-              {/* <div id="genre">
-                <h5 className="detail-headings">GENRE</h5>
-                <p className="detail-content">
-                  {movie.genres &&
-                    movie.genres.map((genre, index) => (
-                      <span key={genre.id}>
-                        {genre.name}
-                        {index !== movie.genres.length - 1 && ", "}
-                      </span>
-                    ))}
-                </p>
-              </div> */}
             </div>
           </div>
         </div>
