@@ -343,8 +343,8 @@ a {
   border: none;
   border-radius: 10px;
   position: absolute;
-  top: 19%;
-  left: 78%;
+  top: 90%;
+  left: 85%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: row;
@@ -515,7 +515,8 @@ a {
 }
 
 .fav-movie-list {
-  min-height: 800px;
+  min-height: 500px;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .empty-list {
@@ -739,7 +740,7 @@ a {
   }
 
   .removeIcon {
-    top: 37%;
+    top: 90%;
     left: 85%;
   }
 
@@ -866,7 +867,7 @@ a {
   }
 
   .removeIcon {
-    top: 52%;
+    top: 91%;
     left: 87%;
   }
   /* details */
@@ -925,6 +926,10 @@ a {
   }
   .movie-card:hover .fav-watch-btn-container {
     top: 94%;
+  }
+
+  .fav-movie-list {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
