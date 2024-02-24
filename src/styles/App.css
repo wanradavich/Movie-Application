@@ -673,7 +673,8 @@ a {
   display: flex;
   align-items: center;
   width: 77%;
-  margin-top: auto;
+  margin-bottom: 30px;
+  /* deploy change */
 }
 
 @media screen and (min-width: 768px) {
@@ -790,8 +791,8 @@ a {
   }
 
   #movie-card-title-p-tag {
-    margin-bottom: 10px;
     font-size: 1.1rem;
+    margin-bottom: 10px;
   }
 
   .movie-card #movie-card-title {
@@ -926,6 +927,9 @@ a {
 
   .fav-movie-list {
     grid-template-columns: repeat(4, 1fr);
+  }
+  #movie-card-title-p-tag {
+    margin-top: 10px;
   }
 }
 
