@@ -342,14 +342,15 @@ a {
 .removeIcon {
   border: none;
   border-radius: 10px;
-  position: absolute;
-  top: 46%;
-  left: 85%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: row;
-  padding: 6px;
+  padding: 0px 6px 3px 6px;
   transition: transform 0.4s ease;
+}
+
+.removeIconContainer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
   z-index: 2;
 }
 
@@ -651,7 +652,7 @@ a {
   }
 }
 .movie-card #movie-card-title {
-  padding-top: 20px;
+  padding-top: 40px;
   z-index: 1;
   position: absolute;
   bottom: 0px;
@@ -740,11 +741,6 @@ a {
     min-height: 550px;
   }
 
-  .removeIcon {
-    top: 52%;
-    left: 85%;
-  }
-
   /* details */
   .movie-list {
     grid-template-columns: repeat(3, 1fr);
@@ -799,6 +795,7 @@ a {
 
   .movie-card #movie-card-title {
     height: 60px;
+    padding-top: 20px;
   }
 }
 
@@ -867,10 +864,6 @@ a {
     padding: 20px 0px;
   }
 
-  .removeIcon {
-    top: 52%;
-    left: 87%;
-  }
   /* details */
   .movie-list {
     display: grid;
@@ -905,6 +898,7 @@ a {
   }
 
   .movie-card:hover #movie-card-title {
+    padding-bottom: 20px;
     z-index: 1;
     position: absolute;
     bottom: -19px;
