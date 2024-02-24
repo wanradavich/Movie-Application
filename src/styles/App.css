@@ -400,12 +400,11 @@ a {
   position: fixed;
   top: 60px;
   width: 100%;
-  /* z-index: 1000000; */
   background-color: black;
 }
 
 .fixed-nav-transition {
-  margin-top: 6.3rem;
+  margin-top: 11rem;
 }
 
 .category {
@@ -716,8 +715,11 @@ a {
     position: fixed;
     top: 50px;
     width: 100%;
-
     background-color: black;
+  }
+
+  .fixed-nav-transition {
+    margin-top: 12rem;
   }
 
   #nav-list li {
@@ -725,7 +727,7 @@ a {
   }
 
   .home-cat {
-    margin-top: 15px;
+    margin-top: 22px;
   }
   .category {
     margin: 30px;
@@ -885,6 +887,10 @@ a {
   }
   #detail-heart-container {
     bottom: -345px;
+  }
+
+  .fixed-nav-transition {
+    margin-top: 7.3rem;
   }
 }
 
