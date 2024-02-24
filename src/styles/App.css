@@ -327,7 +327,6 @@ a {
 .movie-card {
   position: relative;
   transition: all 0.2s ease-in-out;
-  max-height: 260px;
   display: flex;
   flex-direction: column;
 }
