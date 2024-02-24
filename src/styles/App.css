@@ -935,7 +935,7 @@ a {
 
 @media screen and (min-width: 1440px) {
   .removeIcon {
-    top: 76%;
+    top: 93%;
     left: 89%;
   }
 
@@ -989,11 +989,6 @@ a {
   }
   .movie-card:hover .fav-watch-btn-container {
     top: 97%;
-  }
-
-  .removeIcon {
-    top: 86%;
-    left: 89%;
   }
 
   #detail-heart-container {
