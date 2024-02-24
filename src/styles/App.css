@@ -399,7 +399,7 @@ a {
   position: fixed;
   top: 60px;
   width: 100%;
-  z-index: 1;
+  z-index: 1000000;
   background-color: black;
 }
 
@@ -847,7 +847,7 @@ a {
   }
 
   .removeIcon {
-    top: 55%;
+    top: 52%;
     left: 87%;
   }
   /* details */
@@ -881,6 +881,11 @@ a {
 }
 
 @media screen and (min-width: 1440px) {
+  .removeIcon {
+    top: 76%;
+    left: 89%;
+  }
+
   .banner-desc {
     margin-right: 150px;
     max-width: 100%;
@@ -905,16 +910,13 @@ a {
     font-size: 20px;
   }
 }
-/* .wrapper {
-  width: 100vw;
-} */
 
 @media (min-width: 1024px) {
   .movie-card:hover #movie-card-title {
     z-index: 1;
     position: absolute;
     bottom: -17px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     width: 110%;
     height: 70px;
     background-color: rgba(0, 0, 0, 0.75);
@@ -927,9 +929,7 @@ a {
     line-height: 24px;
     transition: opacity 0.3s ease; /* Add transition */
   }
-  /* #movie-card-title {
-    display: none;
-  } */
+
   .movie-card #movie-card-title {
     opacity: 0;
   }
@@ -940,7 +940,7 @@ a {
 @media (min-width: 1440px) {
   .movie-card:hover #movie-card-title {
     bottom: -25px;
-    font-size: 1.7rem;
+    font-size: 1.2rem;
     width: 110%;
     height: 80px;
     left: -17px;
@@ -951,7 +951,7 @@ a {
 @media (min-width: 1620px) {
   .movie-card:hover #movie-card-title {
     bottom: -30px;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     width: 110%;
     height: 80px;
     left: -19px;
@@ -960,5 +960,10 @@ a {
   }
   .movie-card:hover .fav-watch-btn-container {
     top: 97%;
+  }
+
+  .removeIcon {
+    top: 86%;
+    left: 89%;
   }
 }
