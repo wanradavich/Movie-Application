@@ -28,11 +28,7 @@ const FavoritesPage = () => {
         ) : (
           <div id="empty-list-container">
             <p className="empty-list">Your Movie List is Empty</p>
-            <img
-              id="empty-list-img"
-              src={ NoMovie}
-              alt="empty-list"
-            />
+            <img id="empty-list-img" src={NoMovie} alt="empty-list" />
           </div>
         )}
       </div>
