@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 fly.toml
+
+#ignore .env file
+.env

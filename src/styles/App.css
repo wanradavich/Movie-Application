@@ -789,6 +789,15 @@ a {
     width: 740px;
     height: 425px;
   }
+
+  #movie-card-title-p-tag {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+
+  .movie-card #movie-card-title {
+    height: 60px;
+  }
 }
 
 @media screen and (min-width: 1024px) {

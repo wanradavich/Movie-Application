@@ -16,7 +16,7 @@ const MovieCategory = ({ apiUrl }) => {
 
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
   const baseUrl = "https://api.themoviedb.org/3";
-  const apiKey = "d54e5d8cf2227762d2ed37b16b4ea050";
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     fetchData();
