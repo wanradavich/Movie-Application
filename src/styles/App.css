@@ -387,6 +387,7 @@ a {
   align-items: center;
   position: relative;
   flex-direction: column;
+  z-index: 1000000;
 }
 
 .home-cat-btn > ul > li > a {
@@ -399,7 +400,7 @@ a {
   position: fixed;
   top: 60px;
   width: 100%;
-  z-index: 1000000;
+  /* z-index: 1000000; */
   background-color: black;
 }
 
@@ -649,10 +650,11 @@ a {
   }
 }
 .movie-card #movie-card-title {
+  padding-top: 20px;
   z-index: 1;
   position: absolute;
   bottom: 0px;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   width: 110%;
   height: 70px;
   background-color: rgba(0, 0, 0, 0.75);
@@ -672,6 +674,9 @@ a {
 }
 
 @media screen and (min-width: 768px) {
+  .about-desc {
+    font-size: 18px;
+  }
   .banner-desc {
     margin: 100px 30px 0px 0px;
     padding: 10px;
@@ -711,7 +716,7 @@ a {
     position: fixed;
     top: 50px;
     width: 100%;
-    z-index: 1;
+
     background-color: black;
   }
 
@@ -748,7 +753,7 @@ a {
     margin-bottom: 30px;
   }
   #poster-container {
-    width: 35vw;
+    width: 40vw;
     padding-left: 25px;
   }
   .movie-details-container {
@@ -785,6 +790,9 @@ a {
 }
 
 @media screen and (min-width: 1024px) {
+  .about-desc {
+    font-size: 24px;
+  }
   #search-input {
     margin: 0;
   }
@@ -867,7 +875,7 @@ a {
   }
   #poster-container {
     padding-left: 0;
-    width: 40vw;
+    width: 35vw;
     height: 55vh;
   }
 
@@ -897,7 +905,7 @@ a {
 
   #poster-container {
     padding-left: 0;
-    width: 35vw;
+    width: 30vw;
     height: 55vh;
   }
 
@@ -915,12 +923,12 @@ a {
   .movie-card:hover #movie-card-title {
     z-index: 1;
     position: absolute;
-    bottom: -17px;
+    bottom: -19px;
     font-size: 1.2rem;
     width: 110%;
     height: 70px;
     background-color: rgba(0, 0, 0, 0.75);
-    left: -12px;
+    left: -11px;
     display: flex;
     align-items: center;
     opacity: 1;
