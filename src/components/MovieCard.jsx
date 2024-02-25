@@ -3,11 +3,13 @@ import { addToFavorites, removeFromFavorites } from "../slices/favoritesSlice";
 import { Link } from "react-router-dom";
 import Camera from "./images/camera.jpg";
 
+// Functional component to display the movie card
 const MovieCard = ({ movie, baseImageUrl }) => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.favorites);
   const isFavorite = favorites.some((favorite) => favorite.id === movie.id);
 
+  // Event handler for toggling favorite status of the movie
   const handleToggleFavorite = (event) => {
     event.preventDefault();
     if (isFavorite) {

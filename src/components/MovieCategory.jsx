@@ -6,6 +6,7 @@ import { addToFavorites } from "../slices/favoritesSlice";
 import { useState, useEffect } from "react";
 import LoadSpinner from "./LoadSpinner";
 
+// Functional component to display a category of movies
 const MovieCategory = ({ apiUrl }) => {
   const dispatch = useDispatch();
   const [movies, setMovies] = useState([]);
@@ -25,7 +26,7 @@ const MovieCategory = ({ apiUrl }) => {
   //for home category nav transition
   useEffect(() => {
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 340);
+      setIsSticky(window.scrollY > 340); // Set sticky navigation based on scroll position
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -35,6 +36,7 @@ const MovieCategory = ({ apiUrl }) => {
     };
   }, []);
 
+  // Function to fetch movies from API
   const fetchData = async () => {
     try {
       const response = await fetch(apiUrl);
@@ -56,6 +58,7 @@ const MovieCategory = ({ apiUrl }) => {
       setLoading(false);
     }
   };
+  // Function to search movies by title
   const searchMovies = async (query) => {
     if (!query) {
       // If the search query is empty, fetch all movies
@@ -77,11 +80,13 @@ const MovieCategory = ({ apiUrl }) => {
     }
   };
 
+  // Event handler for search input change
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
     searchMovies(event.target.value); // Trigger search as the user types
   };
 
+   // Event handler for search form submission
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     searchMovies(searchQuery);

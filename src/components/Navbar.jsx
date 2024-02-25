@@ -3,9 +3,11 @@ import "../styles/App.css";
 import { useState, useEffect } from "react";
 import Logo from "./images/logo-movieapp.jpg";
 import Avatar from "./images/movie-avatar.jpg";
+// Functional component for rendering the navigation bar
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);  // State variable to track scroll position
 
+  // Effect hook to update isScrolled state based on scroll position
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);

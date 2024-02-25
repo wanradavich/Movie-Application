@@ -6,6 +6,7 @@ import { addToFavorites, removeFromFavorites } from "../slices/favoritesSlice";
 import Camera from "./images/camera.jpg";
 import { useLocation } from "react-router-dom";
 
+// Functional component to display the movie details
 const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
@@ -22,6 +23,7 @@ const MovieDetails = () => {
     (favorite) => favorite.id === (movie?.id || id)
   );
 
+  // Function to handle adding/removing movie from favorites
   const handleToggleFavorite = () => {
     if (isFavorite) {
       dispatch(removeFromFavorites(movie?.id || id));
@@ -33,14 +35,14 @@ const MovieDetails = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        if (!locationStateMovie) {
+        if (!locationStateMovie) { // If movie details not available in location state, fetch from API
           const movieResponse = await fetch(
             `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`
           );
           const movieData = await movieResponse.json();
           setMovie(movieData);
         } else {
-          setMovie(locationStateMovie);
+          setMovie(locationStateMovie); // Set movie details from location state
         }
 
         const videoResponse = await fetch(
